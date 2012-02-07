@@ -8,6 +8,7 @@ var musicImage : Texture2D;
 var soundImage : Texture2D;
 var mainMenuTheme: AudioClip;
 var showdownLogo : Texture2D;
+var achievementTemplate : Texture2D;
 var locationColor : Color;
 static var menu : int = 0;
 var leftMouseCheck : int = 0;
@@ -45,7 +46,7 @@ if (menu == 1)
 	GUI.Label (Rect (Screen.width*.525,Screen.height*.575,Screen.width*.425,Screen.height*.375), optionsImage);
 		
 	
-	GUI.Label (Rect (Screen.width*.35,0,Screen.width*.3,Screen.height*.5), showdownLogo);
+	GUI.Label (Rect (Screen.width*.4,0,Screen.width*.2,Screen.height*.15), showdownLogo);
 	
 	}
 	
@@ -73,42 +74,42 @@ if (menu == 5)
 		{
 			menu = 1;
 		}
-	if (GUI.Button(Rect(Screen.width*.1,Screen.height*.2,Screen.width*.35,Screen.height*.1), "Achievements"))
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.425,Screen.height*.175), "Achievements"))
 		{
 			menu = 6;
 			extrasMenu = 1;
 		}
-	if (GUI.Button(Rect(Screen.width*.1,Screen.height*.4,Screen.width*.35,Screen.height*.1), "Challenges"))
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.325,Screen.width*.425,Screen.height*.175), "Challenges"))
 		{
 			menu = 6;
 			extrasMenu = 2;
 		}
-	if (GUI.Button(Rect(Screen.width*.1,Screen.height*.6,Screen.width*.35,Screen.height*.1), "Exhibits"))
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.55,Screen.width*.425,Screen.height*.175), "Exhibits"))
 		{
 			menu = 6;
 			extrasMenu = 3;
 		}
-	if (GUI.Button(Rect(Screen.width*.1,Screen.height*.8,Screen.width*.35,Screen.height*.1), "Notifications"))
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.775,Screen.width*.425,Screen.height*.175), "Notifications"))
 		{
 			menu = 6;
 			extrasMenu = 4;
 		}
-	if (GUI.Button(Rect(Screen.width*.55,Screen.height*.2,Screen.width*.35,Screen.height*.1), "Gallery"))
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.1,Screen.width*.425,Screen.height*.175), "Gallery"))
 		{
 			menu = 6;
 			extrasMenu = 5;
 		}
-	if (GUI.Button(Rect(Screen.width*.55,Screen.height*.4,Screen.width*.35,Screen.height*.1), "Sound Test"))
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.325,Screen.width*.425,Screen.height*.175), "Sound Test"))
 		{
 			menu = 6;
 			extrasMenu = 6;
 		}
-	if (GUI.Button(Rect(Screen.width*.55,Screen.height*.6,Screen.width*.35,Screen.height*.1), "Meet the Makers"))
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.55,Screen.width*.425,Screen.height*.175), "Meet the Makers"))
 		{
 			menu = 6;
 			extrasMenu = 7;
 		}
-	if (GUI.Button(Rect(Screen.width*.55,Screen.height*.8,Screen.width*.35,Screen.height*.1), "Credits"))
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.775,Screen.width*.425,Screen.height*.175), "Credits"))
 		{
 			menu = 6;
 			extrasMenu = 8;
@@ -137,165 +138,165 @@ if (extrasMenu == 1)
 	//Locked
 	if (Achievements.achieve[1] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Basic Training");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.225,Screen.height*.17),achievementTemplate);
 		}
 	if (Achievements.achieve[2] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Boot Camp");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Boot Camp");
 		}
 	if (Achievements.achieve[3] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Basic Brawler");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Basic Brawler");
 		}
 	if (Achievements.achieve[4] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Specialized Fighter");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Specialized Fighter");
 		}
 	if (Achievements.achieve[5] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"Handsy");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Handsy");
 		}
 	if (Achievements.achieve[6] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"Splintered Shields");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Splintered Shields");
 		}
 	if (Achievements.achieve[7] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"KO King: Tahu");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.27,Screen.width*.225,Screen.height*.17),"KO King: Tahu");
 		}
 	if (Achievements.achieve[8] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"KO King: Kopaka");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.27,Screen.width*.225,Screen.height*.17),"KO King: Kopaka");
 		}
 	if (Achievements.achieve[9] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"KO Master: Tahu");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.44,Screen.width*.225,Screen.height*.17),"KO Master: Tahu");
 		}
 	if (Achievements.achieve[10] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"KO Master: Kopaka");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.44,Screen.width*.225,Screen.height*.17),"KO Master: Kopaka");
 		}
 	if (Achievements.achieve[11] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"Fire and Ice");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Fire and Ice");
 		}
 	if (Achievements.achieve[12] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"Bragging Rights");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Bragging Rights");
 		}
 	if (Achievements.achieve[13] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Heart Attack");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Heart Attack");
 		}
 	if (Achievements.achieve[14] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Reconciliation");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Reconciliation");
 		}
 	if (Achievements.achieve[15] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Restraining Order");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Restraining Order");
 		}
 	if (Achievements.achieve[16] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Negate and Destroy");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Negate and Destroy");
 		}
 	if (Achievements.achieve[17] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Gives you Winnngggs");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Gives you Winnngggs");
 		}
 	if (Achievements.achieve[18] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Can't Burst this Bubble");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Can't Burst this Bubble");
 		}
 	if (Achievements.achieve[19] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"IT'S SUPER EFFECTIVE!!!");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.78,Screen.width*.225,Screen.height*.17),"IT'S SUPER EFFECTIVE!!!");
 		}
 	if (Achievements.achieve[20] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Appreciative Player");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Appreciative Player");
 		}
 	
 	//Unlocked
 	if (Achievements.achieve[1] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Unlocked: Basic Training");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Basic Training");
 		}
 	if (Achievements.achieve[2] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Unlocked: Boot Camp");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Boot Camp");
 		}
 	if (Achievements.achieve[3] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Unlocked: Basic Brawler");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Basic Brawler");
 		}
 	if (Achievements.achieve[4] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.1,Screen.width*.1875,Screen.height*.13),"Unlocked: Specialized Fighter");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Specialized Fighter");
 		}
 	if (Achievements.achieve[5] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"Unlocked: Handsy");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: Handsy");
 		}
 	if (Achievements.achieve[6] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"Unlocked: Splintered Shields");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: Splintered Shields");
 		}
 	if (Achievements.achieve[7] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"Unlocked: KO King: Tahu");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: KO King: Tahu");
 		}
 	if (Achievements.achieve[8] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.28,Screen.width*.1875,Screen.height*.13),"Unlocked: KO King: Kopaka");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: KO King: Kopaka");
 		}
 	if (Achievements.achieve[9] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"Unlocked: KO Master: Tahu");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: KO Master: Tahu");
 		}
 	if (Achievements.achieve[10] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"Unlocked: KO Master: Kopaka");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: KO Master: Kopaka");
 		}
 	if (Achievements.achieve[11] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"Unlocked: Fire and Ice");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: Fire and Ice");
 		}
 	if (Achievements.achieve[12] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.46,Screen.width*.1875,Screen.height*.13),"Unlocked: Bragging Rights");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: Bragging Rights");
 		}
 	if (Achievements.achieve[13] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Unlocked: Heart Attack");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Heart Attack");
 		}
 	if (Achievements.achieve[14] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Unlocked: Reconciliation");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Reconciliation");
 		}
 	if (Achievements.achieve[15] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Unlocked: Restraining Order");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Restraining Order");
 		}
 	if (Achievements.achieve[16] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.64,Screen.width*.1875,Screen.height*.13),"Unlocked: Negate and Destroy");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Negate and Destroy");
 		}
 	if (Achievements.achieve[17] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Unlocked: Gives you Winnngggs");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: Gives you Winnngggs");
 		}
 	if (Achievements.achieve[18] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.2875,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Unlocked: Can't Burst this Bubble");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: Can't Burst this Bubble");
 		}
 	if (Achievements.achieve[19] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.525,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Unlocked: IT'S SUPER EFFECTIVE!");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: IT'S SUPER EFFECTIVE!");
 		}
 	if (Achievements.achieve[20] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.7625,Screen.height*.82,Screen.width*.1875,Screen.height*.13),"Unlocked: Appreciative Player");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: Appreciative Player");
 		}
 		
 	}
@@ -419,7 +420,7 @@ if (trainingButton.Contains (Input.mousePosition))
 			locationColor = trainingImage.GetPixelBilinear (locationU,locationV);
 			if (locationColor.a > 0)
 				{
-				print ("Training");
+				menu = 8;
 				Achievements.achieve[1] = 1;
 				widgetsEarned = widgetsEarned + 5;
 				}
