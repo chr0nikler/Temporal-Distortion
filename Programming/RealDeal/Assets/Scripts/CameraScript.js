@@ -19,21 +19,26 @@ var offset : float;
 
 function Start(){
 
-    targets = GameObject.FindGameObjectsWithTag("Player"); 
+    targets = GameObject.FindGameObjectsWithTag("Player");  //Identifies all players
 
 }
 
 function OnGUI(){
 
-    GUILayout.Label("largest distance is = " + largestDistance.ToString());
-    GUILayout.Label("height = " + height.ToString());
+    GUILayout.Label("largest distance is = " + largestDistance.ToString());  //Testing Camera data 
+    GUILayout.Label("height = " + height.ToString());						 //(distance to target point between all players)
     GUILayout.Label("number of players = " + targets.length.ToString());
+    for(n = 0; n < targets.length; n++)
+    {
+    	GUILayout.Label(targets[n].name);
+    }
 
 }
 
-function LateUpdate () 
-{
 
+function LateUpdate () //Camera Follow actiosn
+{
+	
     targets = GameObject.FindGameObjectsWithTag("Player"); 
 
     if (!GameObject.FindWithTag("Player"))
@@ -46,7 +51,7 @@ function LateUpdate ()
         sum += targets[n].transform.position;
 
     }
-      avgDistance = sum / targets.length;
+      avgDistance = sum / targets.length;  //Create avgDistance point between all players
 
 	//Debug.Log(avgDistance);
 
@@ -56,11 +61,32 @@ function LateUpdate ()
 
       theCamera.transform.position.x = avgDistance.x ;
       theCamera.transform.position.z = avgDistance.z - distance - largestDifference;
-	  if (theCamera.transform.position.z > -4)
+	  if (theCamera.transform.position.z > -4)  //Never follow player as to see them go to deathTriggers
       {
 		theCamera.transform.position.z = -4;
 	  }
+	  if (theCamera.transform.position.z < -19)
+      {
+		theCamera.transform.position.z = -19;
+	  }
+	  if (theCamera.transform.position.x < -7)
+      {
+		theCamera.transform.position.x = -7;
+	  }
+	  if (theCamera.transform.position.x > 7)
+      {
+		theCamera.transform.position.x = 7;
+	  }
+	  if (theCamera.transform.position.y > 20)
+      {
+		theCamera.transform.position.y = 20;
+	  }
+	  if (theCamera.transform.position.y < -2)
+      {
+		theCamera.transform.position.y = -2;
+	  }
 	  theCamera.transform.position.y = avgDistance.y;
+	  avgDistance.x = transform.position.x;
 
       theCamera.transform.LookAt(avgDistance);
 

@@ -24,7 +24,7 @@ var dashing:int=0;
 var shielding:int=0;
 var shieldobject:Transform;
 var helplessleft:int=0;
-var percent:int=0;
+static var percent:int=0;
 var stock:int=3;
 
 function Start() {

@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Player2Create.js" />
      <Compile Include="Assets\Scripts\RandomMusic.js" />
      <Compile Include="Assets\Scripts\Shield.js" />
+     <Compile Include="Assets\Scripts\StageLoad.js" />
      <Compile Include="Assets\TempObjects\NewBehaviourScript.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

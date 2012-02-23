@@ -1,33 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\P1script.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Gui_StatDisplay.js">
     <Files>
-      <File FileName="Assets\Menu Stuff\SelectCharacter.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\P1script.js" Line="19" Column="19" />
-      <File FileName="Assets\Scripts\Player1Create.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gui_StatDisplay.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelAttributes.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Shield.js" Line="1" Column="1" />
-      <File FileName="Assets\Menu Stuff\SelectChar.js" Line="1" Column="1" />
-      <File FileName="Assets\Menu Stuff\menu2.js" Line="1" Column="1" />
-      <File FileName="Assets\Menu Stuff\menu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player1Create.js" Line="2" Column="29" />
+      <File FileName="Assets\Scripts\StageLoad.js" Line="5" Column="1" />
+      <File FileName="Assets\Scripts\CameraScript.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\P1script.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DeathTrigger.js" Line="1" Column="1" />
       <File FileName="Assets\DemoMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\P2script.js" Line="1" Column="1" />
+      <File FileName="Assets\Menu Stuff\SelectCharacter.js" Line="19" Column="8" />
+      <File FileName="Assets\Scripts\Player2Create.js" Line="2" Column="29" />
+      <File FileName="Assets\Scripts\Gui_StatDisplay.js" Line="30" Column="144" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-UnityScript" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Menu Stuff" expanded="True" />
-              <Node name="Scripts" expanded="True">
-                <Node name="P1script.js" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
