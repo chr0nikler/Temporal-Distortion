@@ -1,3 +1,4 @@
+//IMAGE VARIABLES
 var pressStart : Texture2D; //Texture for title screen
 var multiPlayerImage : Texture2D; //Texture for "Fight!" button
 var trainingImage : Texture2D; //Texture for "Training" button
@@ -6,9 +7,66 @@ var extrasImage : Texture2D; //Texture for "Extras" button
 var backImage : Texture2D; //Texture for the back button
 var musicImage : Texture2D; //Texture that will be used to display "Music" in Options
 var soundImage : Texture2D; //Texture that will be used to display "Sound" in Options
-var mainMenuTheme: AudioClip; //Variable for Main Menu Music
+var controlsImage : Texture2D; //Texture that will be used to display "Controls" in Options
 var showdownLogo : Texture2D; //Texture for the logo
-var achievementTemplate : Texture2D; 
+var extrasAchievementsImage : Texture2D; //Texture for the Achievements Extras Menu Button
+var extrasChallengesImage : Texture2D; //Texture for the Challenges Extras Menu Button
+var extrasExhibitsImage : Texture2D; //Texture for the Exhibits Extras Menu Button
+var extrasNotificationsImage : Texture2D; //Texture for the Notifications Extras Menu Button
+var extrasGalleryImage : Texture2D; //Texture for the Gallery Extras Menu Button
+var extrasStatisticsImage : Texture2D; //Texture for the Statistics Extras Menu Button
+var extrasSoundTestImage : Texture2D; //Texture for the Sound Test Extras Menu Button
+var extrasCreditsImage : Texture2D; //Texture for the Credits Extras Menu Button 
+
+//--Achievement Images--
+//----Locked Achievements----
+var lockedAchievementImageBT : Texture2D;
+var lockedAchievementImageBC : Texture2D;
+var lockedAchievementImageBB : Texture2D;
+var lockedAchievementImageSF : Texture2D;
+var lockedAchievementImageH : Texture2D;
+var lockedAchievementImageSS : Texture2D;
+var lockedAchievementImageKoKT : Texture2D;
+var lockedAchievementImageKoKK : Texture2D;
+var lockedAchievementImageKoMT : Texture2D;
+var lockedAchievementImageKoMK : Texture2D;
+var lockedAchievementImageFaI : Texture2D;
+var lockedAchievementImageBR : Texture2D;
+var lockedAchievementImageHA : Texture2D;
+var lockedAchievementImageR : Texture2D;
+var lockedAchievementImageRO : Texture2D;
+var lockedAchievementImageNaD : Texture2D;
+var lockedAchievementImageGyW : Texture2D;
+var lockedAchievementImageCbtB : Texture2D;
+var lockedAchievementImageISE : Texture2D;
+var lockedAchievementImageAP : Texture2D;
+//----Unlocked Achievements----
+var unlockedAchievementImageBT : Texture2D;
+var unlockedAchievementImageBC : Texture2D;
+var unlockedAchievementImageBB : Texture2D;
+var unlockedAchievementImageSF : Texture2D;
+var unlockedAchievementImageH : Texture2D;
+var unlockedAchievementImageSS : Texture2D;
+var unlockedAchievementImageKoKT : Texture2D;
+var unlockedAchievementImageKoKK : Texture2D;
+var unlockedAchievementImageKoMT : Texture2D;
+var unlockedAchievementImageKoMK : Texture2D;
+var unlockedAchievementImageFaI : Texture2D;
+var unlockedAchievementImageBR : Texture2D;
+var unlockedAchievementImageHA : Texture2D;
+var unlockedAchievementImageR : Texture2D;
+var unlockedAchievementImageRO : Texture2D;
+var unlockedAchievementImageNaD : Texture2D;
+var unlockedAchievementImageGyW : Texture2D;
+var unlockedAchievementImageCbtB : Texture2D;
+var unlockedAchievementImageISE : Texture2D;
+var unlockedAchievementImageAP : Texture2D;
+
+
+//AUDIO VARIABLES
+var mainMenuTheme: AudioClip; //Variable for Main Menu Music
+
+//SETTING VARIABLES
 var locationColor : Color; //Color recorded to test for Alpha later
 static var menu : int = 0; //Creates a Public Variable for the menu sections
 var leftMouseCheck : int = 0; 
@@ -19,19 +77,47 @@ var widgetsEarned : int = 0; //Total widgets earned
 var widgetsSpent : int = 0; //Total widgets spent
 var widgetsRemaining : int = (widgetsEarned - widgetsSpent); //Widgets that can be spent
 
+//STATS VARIABLES
+var numberKOs = 0; //Number of KOs
+var numberTKOs = 0; //Number of TKOs
+var numberSDs = 0; //Number of Self Destructs
+var favoriteChar : String = "N/A"; //Name of the most-used character
+var numberFightsComplete = 0; //Counts all fights that were completed
+var numberFightsAborted = 0; //Counts all fights that were ended before completion
+var numberFightsWStock = 0; //Counts all fights that involved stock
+var numberFightsOStock = 0; //Counts all fights with only stock
+var numberFightsWTime = 0; //Counts all fights that involved time
+var numberFightsOTime = 0; //Counts all fights with only time
+var numberFightsWWidgets = 0; //Counts all fights that involved widgets
+var numberFightsOWidgets = 0; //Counts all fights with only widgets
+var numberFightsAll = 0; //Counts all fights with all three types
+var numberFightsOTahu = 0; //Counts all fights using only Tahu
+var numberFightsOKopaka = 0; //Counts all fights using only Kopaka
+var numberFightsBCharacters = 0; //Counts all fights with both Characters
+var numberFightsTrueShowdown = 0; //Counts all 1v1 FFA fights with Tahu and Kopaka
+var numberFightsSTeams = 0; //Counts all 2v2 team matches where the teams have two of the same character
 var pressedStartAmount = 0; //Records how many times the player has pressed start
+pressedStartAmount = PlayerPrefs.GetInt("Start Amount");
 var pressedFightAmount = 0; //Records how many times the player pressed the Fight button
 var pressedTrainingAmount = 0; //Records how many times the player pressed the Training button
 var pressedExtrasAmount = 0; //Records how many times the player pressed the Extras button
 var pressedOptionsAmount = 0; //Records how many times the player pressed the Options button
 var pressedAchievementsAmount = 0; //Records how many times the player pressed the Achievements button
+pressedAchievementsAmount = PlayerPrefs.GetInt("Achievement Amount");
 var pressedChallengesAmount = 0; //Records how many times the player pressed the Challenges button
+pressedChallengesAmount = PlayerPrefs.GetInt("Challenges Amount");
 var pressedExhibitsAmount = 0; //Records how many times the player pressed the Exhibits button
+pressedExhibitsAmount = PlayerPrefs.GetInt("Exhibits Amount");
 var pressedNotificationsAmount = 0; //Records how many times the player pressed the Notifications Button
+pressedNotificationsAmount = PlayerPrefs.GetInt("Notifications Amount");
 var pressedGalleryAmount = 0; //Records how many times the player pressed the Gallery button
+pressedGalleryAmount = PlayerPrefs.GetInt("Gallery Amount");
 var pressedSoundTestAmount = 0; //Records how many times the player pressed the Sound Test button
+pressedSoundTestAmount = PlayerPrefs.GetInt("Sound Test Amount");
 var pressedStatisticsAmount = 0; //Records how many times the player pressed the Statistics Button
+pressedStatisticsAmount = PlayerPrefs.GetInt("Statistics Amount");
 var pressedCreditsAmount = 0; //Records how many times the player pressed the Credits Button
+pressedCreditsAmount = PlayerPrefs.GetInt("Credits Amount");
 
 function OnGUI () {
 	
@@ -42,11 +128,13 @@ if (menu == 0)
 		{
 			menu = 1;
 			pressedStartAmount++;
+			PlayerPrefs.SetInt("Start Amount",pressedStartAmount);
 		}
 	if (Input.GetKeyDown(ControlSetup.acceptButton))
 		{
 			menu = 1;
 			pressedStartAmount++;
+			PlayerPrefs.SetInt("Start Amount",pressedStartAmount);
 		}
 	}
 	
@@ -73,11 +161,13 @@ if (menu == 2)
 		{
 			menu = 1;
 		}
-	musicVolume = GUI.HorizontalSlider(Rect(Screen.width*.25, Screen.height*.2, Screen.width*.5,Screen.height*.05), musicVolume, 0,1); //Creates a slider to change the Music Volume
-	soundVolume = GUI.HorizontalSlider(Rect(Screen.width*.25, Screen.height*.35, Screen.width*.5,Screen.height*.05), soundVolume, 0,1); //Creates a slider to change the Sound Volume
-	GUI.Box (Rect(Screen.width*.05, Screen.height*.15, Screen.width*.15, Screen.height*.1),"Music %" + ((Mathf.Round(musicVolume*100)))); //Determines the percentage of the Music volume
-	GUI.Box (Rect(Screen.width*.05, Screen.height*.3, Screen.width*.15, Screen.height*.1),"Sound %" + ((Mathf.Round(soundVolume*100)))); //Determines the percentage of the Sound volume
-	if (GUI.Button(Rect(Screen.width*.25,Screen.height*.5,Screen.width*.5,Screen.height*.45), "Controls")) //Creates the "Controls" button
+	musicVolume = GUI.HorizontalSlider(Rect(Screen.width*.25, Screen.height*.2, Screen.width*.5,Screen.height*.05), musicVolume, 0, 1); //Creates a slider to change the Music Volume
+	soundVolume = GUI.HorizontalSlider(Rect(Screen.width*.25, Screen.height*.35, Screen.width*.5,Screen.height*.05), soundVolume, 0, 1); //Creates a slider to change the Sound Volume
+	GUI.Box (Rect(Screen.width*.05, Screen.height*.15, Screen.width*.15, Screen.height*.1), musicImage); //Displays the image label for the Music volume
+	GUI.Box (Rect(Screen.width*.05, Screen.height*.3, Screen.width*.15, Screen.height*.1), soundImage); //Displays the image label for the the Sound volume
+	GUI.Box (Rect(Screen.width*.8, Screen.height*.15, Screen.width*.15, Screen.height*.1), ((Mathf.Round(musicVolume*100))) + "%"); //Determines and displays the percentage of the Music volume
+	GUI.Box (Rect(Screen.width*.8, Screen.height*.3, Screen.width*.15, Screen.height*.1), ((Mathf.Round(soundVolume*100))) + "%"); //Determines and displays the percentage of the Sound volume
+	if (GUI.Button(Rect(Screen.width*.25,Screen.height*.5,Screen.width*.5,Screen.height*.45), controlsImage)) //Creates the "Controls" button
 		{
 			menu = 3;
 		}
@@ -90,53 +180,65 @@ if (menu == 5)
 		{
 			menu = 1;
 		}
-	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.425,Screen.height*.175), "Achievements")) //Creates achievement button [should be changed to the same style "button" as the main menu]
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.425,Screen.height*.175), extrasAchievementsImage)) //Creates achievement button [should be changed to the same style "button" as the main menu]
 		{
 			menu = 6;
 			extrasMenu = 1;
 			pressedAchievementsAmount++;
+			PlayerPrefs.SetInt("Achievements Amount", pressedAchievementsAmount);
 		}
-	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.325,Screen.width*.425,Screen.height*.175), "Challenges")) //Creates challenges button [see above]
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.325,Screen.width*.425,Screen.height*.175), extrasChallengesImage)) //Creates challenges button [see above]
 		{
-			menu = 6;
-			extrasMenu = 2;
+			//menu = 6;
+			//extrasMenu = 2;
 			pressedChallengesAmount++;
+			PlayerPrefs.SetInt("Challenges Amount", pressedChallengesAmount);
+			print("Coming Soon");
 		}
-	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.55,Screen.width*.425,Screen.height*.175), "Exhibits")) //Creates exhibits button [see above]
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.55,Screen.width*.425,Screen.height*.175), extrasExhibitsImage)) //Creates exhibits button [see above]
 		{
-			menu = 6;
-			extrasMenu = 3;
+			//menu = 6;
+			//extrasMenu = 3;
 			pressedExhibitsAmount++;
+			PlayerPrefs.SetInt("Exhibits Amount", pressedExhibitsAmount);
+			print("Coming Soon");
 		}
-	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.775,Screen.width*.425,Screen.height*.175), "Notifications")) //Creates notifications button [see above]
+	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.775,Screen.width*.425,Screen.height*.175), extrasNotificationsImage)) //Creates notifications button [see above]
 		{
 			menu = 6;
 			extrasMenu = 4;
 			pressedNotificationsAmount++;
+			PlayerPrefs.SetInt("Notifications Amount", pressedNotificationsAmount);
 		}
-	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.1,Screen.width*.425,Screen.height*.175), "Gallery")) //Creates gallery button [see above]
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.1,Screen.width*.425,Screen.height*.175), extrasGalleryImage)) //Creates gallery button [see above]
 		{
-			menu = 6;
-			extrasMenu = 5;
+			//menu = 6;
+			//extrasMenu = 5;
 			pressedGalleryAmount++;
+			PlayerPrefs.SetInt("Gallery Amount", pressedGalleryAmount);
+			print("Coming Soon");
 		}
-	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.325,Screen.width*.425,Screen.height*.175), "Sound Test")) //Creates sound test button [see above]
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.325,Screen.width*.425,Screen.height*.175), extrasSoundTestImage)) //Creates sound test button [see above]
 		{
-			menu = 6;
-			extrasMenu = 6;
+			//menu = 6;
+			//extrasMenu = 6;
 			pressedSoundTestAmount++;
+			PlayerPrefs.SetInt("Sound Test Amount", pressedSoundTestAmount);
+			print("Coming Soon");
 		}
-	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.55,Screen.width*.425,Screen.height*.175), "Statistics")) //Creates statistics button [see above]
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.55,Screen.width*.425,Screen.height*.175), extrasStatisticsImage)) //Creates statistics button [see above]
 		{
 			menu = 6;
 			extrasMenu = 7;
 			pressedStatisticsAmount++;
+			PlayerPrefs.SetInt("Statistics Amount", pressedStatisticsAmount);
 		}
-	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.775,Screen.width*.425,Screen.height*.175), "Credits")) //Creates credits button [see above]
+	if (GUI.Button(Rect(Screen.width*.525,Screen.height*.775,Screen.width*.425,Screen.height*.175), extrasCreditsImage)) //Creates credits button [see above]
 		{
 			menu = 6;
 			extrasMenu = 8;
 			pressedCreditsAmount++;
+			PlayerPrefs.SetInt("Credits Amount", pressedCreditsAmount);
 			if (pressedCreditsAmount == 1)
 				{
 					Achievements.achieve[20] = 1; //Unlocks 20th achievement
@@ -165,165 +267,165 @@ if (extrasMenu == 1)
 	//Locked
 	if (Achievements.achieve[1] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.225,Screen.height*.17),achievementTemplate);
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.225,Screen.height*.17), lockedAchievementImageBT);
 		}
 	if (Achievements.achieve[2] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Boot Camp");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.1,Screen.width*.225,Screen.height*.17), lockedAchievementImageBC);
 		}
 	if (Achievements.achieve[3] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Basic Brawler");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.1,Screen.width*.225,Screen.height*.17), lockedAchievementImageBB);
 		}
 	if (Achievements.achieve[4] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Specialized Fighter");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.1,Screen.width*.225,Screen.height*.17), lockedAchievementImageSF);
 		}
 	if (Achievements.achieve[5] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Handsy");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.27,Screen.width*.225,Screen.height*.17), lockedAchievementImageH);
 		}
 	if (Achievements.achieve[6] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Splintered Shields");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.27,Screen.width*.225,Screen.height*.17), lockedAchievementImageSS);
 		}
 	if (Achievements.achieve[7] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.27,Screen.width*.225,Screen.height*.17),"KO King: Tahu");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.27,Screen.width*.225,Screen.height*.17), lockedAchievementImageKoKT);
 		}
 	if (Achievements.achieve[8] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.27,Screen.width*.225,Screen.height*.17),"KO King: Kopaka");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.27,Screen.width*.225,Screen.height*.17), lockedAchievementImageKoKK);
 		}
 	if (Achievements.achieve[9] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.44,Screen.width*.225,Screen.height*.17),"KO Master: Tahu");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.44,Screen.width*.225,Screen.height*.17), lockedAchievementImageKoMT);
 		}
 	if (Achievements.achieve[10] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.44,Screen.width*.225,Screen.height*.17),"KO Master: Kopaka");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.44,Screen.width*.225,Screen.height*.17), lockedAchievementImageKoMK);
 		}
 	if (Achievements.achieve[11] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Fire and Ice");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.44,Screen.width*.225,Screen.height*.17), lockedAchievementImageFaI);
 		}
 	if (Achievements.achieve[12] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Bragging Rights");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.44,Screen.width*.225,Screen.height*.17), lockedAchievementImageBR);
 		}
 	if (Achievements.achieve[13] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Heart Attack");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.61,Screen.width*.225,Screen.height*.17), lockedAchievementImageHA);
 		}
 	if (Achievements.achieve[14] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Reconciliation");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.61,Screen.width*.225,Screen.height*.17), lockedAchievementImageR);
 		}
 	if (Achievements.achieve[15] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Restraining Order");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.61,Screen.width*.225,Screen.height*.17), lockedAchievementImageRO);
 		}
 	if (Achievements.achieve[16] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Negate and Destroy");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.61,Screen.width*.225,Screen.height*.17), lockedAchievementImageNaD);
 		}
 	if (Achievements.achieve[17] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Gives you Winnngggs");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.78,Screen.width*.225,Screen.height*.17), lockedAchievementImageGyW);
 		}
 	if (Achievements.achieve[18] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Can't Burst this Bubble");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.78,Screen.width*.225,Screen.height*.17), lockedAchievementImageCbtB);
 		}
 	if (Achievements.achieve[19] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.78,Screen.width*.225,Screen.height*.17),"IT'S SUPER EFFECTIVE!!!");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.78,Screen.width*.225,Screen.height*.17), lockedAchievementImageISE);
 		}
 	if (Achievements.achieve[20] == 0)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Appreciative Player");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.78,Screen.width*.225,Screen.height*.17), lockedAchievementImageAP);
 		}
 	
 	//Unlocked
 	if (Achievements.achieve[1] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Basic Training");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.225,Screen.height*.17), "Unlocked: Basic Training");
 		}
 	if (Achievements.achieve[2] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Boot Camp");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.1,Screen.width*.225,Screen.height*.17), "Unlocked: Boot Camp");
 		}
 	if (Achievements.achieve[3] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Basic Brawler");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.1,Screen.width*.225,Screen.height*.17), "Unlocked: Basic Brawler");
 		}
 	if (Achievements.achieve[4] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.1,Screen.width*.225,Screen.height*.17),"Unlocked: Specialized Fighter");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.1,Screen.width*.225,Screen.height*.17), "Unlocked: Specialized Fighter");
 		}
 	if (Achievements.achieve[5] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: Handsy");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.27,Screen.width*.225,Screen.height*.17), "Unlocked: Handsy");
 		}
 	if (Achievements.achieve[6] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: Splintered Shields");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.27,Screen.width*.225,Screen.height*.17), "Unlocked: Splintered Shields");
 		}
 	if (Achievements.achieve[7] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: KO King: Tahu");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.27,Screen.width*.225,Screen.height*.17), "Unlocked: KO King: Tahu");
 		}
 	if (Achievements.achieve[8] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.27,Screen.width*.225,Screen.height*.17),"Unlocked: KO King: Kopaka");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.27,Screen.width*.225,Screen.height*.17), "Unlocked: KO King: Kopaka");
 		}
 	if (Achievements.achieve[9] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: KO Master: Tahu");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.44,Screen.width*.225,Screen.height*.17), "Unlocked: KO Master: Tahu");
 		}
 	if (Achievements.achieve[10] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: KO Master: Kopaka");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.44,Screen.width*.225,Screen.height*.17), "Unlocked: KO Master: Kopaka");
 		}
 	if (Achievements.achieve[11] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: Fire and Ice");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.44,Screen.width*.225,Screen.height*.17), "Unlocked: Fire and Ice");
 		}
 	if (Achievements.achieve[12] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.44,Screen.width*.225,Screen.height*.17),"Unlocked: Bragging Rights");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.44,Screen.width*.225,Screen.height*.17), "Unlocked: Bragging Rights");
 		}
 	if (Achievements.achieve[13] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Heart Attack");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.61,Screen.width*.225,Screen.height*.17), "Unlocked: Heart Attack");
 		}
 	if (Achievements.achieve[14] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Reconciliation");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.61,Screen.width*.225,Screen.height*.17), "Unlocked: Reconciliation");
 		}
 	if (Achievements.achieve[15] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Restraining Order");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.61,Screen.width*.225,Screen.height*.17), "Unlocked: Restraining Order");
 		}
 	if (Achievements.achieve[16] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.61,Screen.width*.225,Screen.height*.17),"Unlocked: Negate and Destroy");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.61,Screen.width*.225,Screen.height*.17), "Unlocked: Negate and Destroy");
 		}
 	if (Achievements.achieve[17] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.05,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: Gives you Winnngggs");
+			GUI.Button(Rect(Screen.width*.05,Screen.height*.78,Screen.width*.225,Screen.height*.17), "Unlocked: Gives you Winnngggs");
 		}
 	if (Achievements.achieve[18] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.275,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: Can't Burst this Bubble");
+			GUI.Button(Rect(Screen.width*.275,Screen.height*.78,Screen.width*.225,Screen.height*.17), "Unlocked: Can't Burst this Bubble");
 		}
 	if (Achievements.achieve[19] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.5,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: IT'S SUPER EFFECTIVE!");
+			GUI.Button(Rect(Screen.width*.5,Screen.height*.78,Screen.width*.225,Screen.height*.17), "Unlocked: IT'S SUPER EFFECTIVE!");
 		}
 	if (Achievements.achieve[20] == 1)
 		{
-			GUI.Button(Rect(Screen.width*.725,Screen.height*.78,Screen.width*.225,Screen.height*.17),"Unlocked: Appreciative Player");
+			GUI.Button(Rect(Screen.width*.725,Screen.height*.78,Screen.width*.225,Screen.height*.17), "Unlocked: Appreciative Player");
 		}
 		
 	}
@@ -391,6 +493,9 @@ if (extrasMenu == 7)
 				menu = 5;
 				extrasMenu = 0;
 			}
+		GUI.Box(Rect(100,100,50,50), "" + pressedStartAmount);
+		
+		GUI.Box(Rect(150,100,50,50), "" + pressedAchievementsAmount);
 	
 	}
 	

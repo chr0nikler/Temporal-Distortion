@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\StageLoad.js">
+    <Files>
+      <File FileName="Test arraylists.js" Line="3" Column="1" />
+      <File FileName="Assets\Menu Stuff\SelectCharacter.js" Line="1" Column="1" />
+      <File FileName="Assets\DemoMenu.js" Line="134" Column="25" />
+      <File FileName="Assets\ControlSetup.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gui_StatDisplay.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LevelAttributes.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\StageLoad.js" Line="8" Column="41" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

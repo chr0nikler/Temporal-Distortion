@@ -1,17 +1,103 @@
 var NewModel : GameObject;
-static var clone:GameObject;
+static var characterNumber : int = SelectCharacter.player1Character;
+static var clone : GameObject;
+
+
+function Awake()
+{
+	if(characterNumber == 1)
+	{
+		NewModel = Characters.Tahu;
+		
+	}
+	else if(characterNumber == 2)
+	{
+		NewModel = Characters.Kopaka;
+	}
+	else if(characterNumber == 3)
+	{
+		if(Random.value > 0.5)
+		{
+			characterNumber = 1;
+		}
+		else
+		{
+			characterNumber = 2;
+		}
+		if(characterNumber == 1)
+		{
+			NewModel = Characters.Tahu;
+		}
+		else if(characterNumber == 2)
+		{
+			NewModel = Characters.Kopaka;
+		}
+	}
+
+}
 
 function Start() {
 
+	
 	clone = Instantiate(NewModel, transform.position, transform.rotation);
+	clone.transform.localScale += Vector3(10,10,10);
+	clone.tag = "Player";
+	
 	clone.AddComponent(CharacterController);
+	clone.GetComponent(CharacterController).radius = 0.07;
+	clone.GetComponent(CharacterController).height = 0.2205;
+	clone.GetComponent(CharacterController).center.y = 0.1;
+	clone.animation.playAutomatically = false;
 	clone.AddComponent("P1script");
+	if(characterNumber == 1)
+	{
+		if(SelectCharacter.player1Costume == 2)
+		{
+			clone.Find("Plane_024").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTS;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTS;
+		}
+		else if(SelectCharacter.player1Costume == 3)
+		{
+			clone.Find("Plane_024").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTI;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTI;
+			
+		}
+		else if(SelectCharacter.player1Costume == 4)
+		{
+			clone.Find("Plane_024").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTR;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTR;
+		}
+		else if(SelectCharacter.player1Costume == 5)
+		{
+			clone.Find("Plane_024").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTG;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.TTG;
+		}
+	}
+	else if(characterNumber == 2)
+	{
+		if(SelectCharacter.player1Costume == 2)
+		{
+			clone.Find("Plane_000").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTS;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTS;
+		}
+		else if(SelectCharacter.player1Costume == 3)
+		{
+			clone.Find("Plane_000").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTI;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTI;
+			
+		}
+		else if(SelectCharacter.player1Costume == 4)
+		{
+			clone.Find("Plane_000").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTR;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTR;
+		}
+		else if(SelectCharacter.player1Costume == 5)
+		{
+			clone.Find("Plane_000").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTG;
+			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTG;
+		}
+	}
 	
 }
 
-/*function OnGUI(){
-	GUI.skin = charSkin;
-	GUI.Label(Rect(Screen.width*0.1, Screen.height*0.85, Screen.width*0.15, Screen.height*0.15),stockIcon);
-	GUI.Box(Rect(Screen.width*0.1, Screen.height*0.85, Screen.width*0.15, Screen.height*0.15),P1script.percent + "%");
-	GUI.Label(Rect(Screen.width*0.1, Screen.height*0.95, Screen.width*0.15, Screen.height*0.1), NewModel.name);
-}*/
+

@@ -1,0 +1,112 @@
+
+
+Moves------------------------progress----------frames
+
+----------------------------------------------------------
+Walk: Needs work 1-41
+
+Run: Needs work 53-85
+
+Jump: Waiting Approval 100-141
+
+Idle:needs work 161-201
+
+Double jump:needs work 221-350
+
+Horizontal Sword slash:Needs work 370-385
+
+Slash slash sheild bash:needs work 410-460
+
+Arc up swing:Needs work: 500-522
+
+Downward stab:Needs work: 540-560
+
+Sheild hit:
+
+Sheild charge:
+
+Spin slash:
+
+Back flip:
+
+Dive Down with Sword:
+
+Swing Sword Down:
+
+Swing Shield Backwards:
+
+Knee:
+
+Grab and Kick into Air:
+
+Grab and Slam into Ground:
+
+Grab and Shield Bash:
+
+Slam Upward with Shield:
+
+Smash Downward Stab:
+    
+Shield Bash:
+    
+Icy Wind:
+    
+Slide Up on Ice Slide:
+    
+Crouch Behind Shield:
+ 
+Shoot Stream of Ice:
+    
+Slide Away from Screen:
+    
+Knee-Slide Forward:            
+    
+Jump Backward:
+    
+Turn Towards Screen:
+    
+Icy Blue:
+    
+Blizzard:
+    
+Twirl Sword then Sheath it:
+    
+Looks around the stage, lens glowing:
+    
+Stab sword into air, blue glint on sword:
+
+------==-----------==-------------==------------
+Attack Horizontal Sword Slash
+Attack (repeated) Slash Slash Shield-Bash
+↑ + Attack Arc Up Swing
+↓ + Attack Downward Stab
+←/→ + Attack Shield Hit
+←/→ + Attack (while running) Shield Charge
+Attack (midair) Spin Slash
+↑ + Attack (midair) Back Flip
+↓ + Attack (midair) Dive Down with Sword
+←/→ + Attack (facing opponent, midair) Swing Sword Down
+←/→ + Attack (midair, facing away) Swing Shield Backwards
+Grab + Attack Knee
+Grab + ↑ Grab and Kick into Air
+Grab + ↓ Grab and Slam into Ground
+Grab + ←/→ Grab and Shield Bash
+Smash ↑ + A (simul.) Slam Upward with Shield
+Smash ↓ + A (simul.) Smash Downward Stab
+Smash ←/→ + A (simul.) Shield Bash
+Special Icy Wind
+↑ + Special Slide Up on Ice Slide
+↓ + Special Crouch Behind Shield
+←/→ + Special Shoot Stream of Ice
+Spotdodge Slide Away from Screen
+Forward Dodge Knee-Slide Forward
+Backward Dodge Jump Backward
+Aerial Dodge Turn Towards Screen
+Shield Icy Blue
+Final Smash Blizzard
+Taunt 1 Twirl Sword then Sheath it
+Taunt 2 Looks around the stage, lens glowing
+Taunt 3 Stab sword into air, blue glint on sword
+Jump
+Take Damage
+Idle                                    

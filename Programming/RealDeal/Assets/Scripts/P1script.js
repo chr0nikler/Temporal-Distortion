@@ -1,12 +1,16 @@
-var playernum:int=1;
+ var playernum:int=1;
 animation["jump"].layer=1;
 animation["midjump"].layer=1;
 animation["injured"].layer=2;
-animation["punch"].layer=2;
+animation["slash1"].layer=2;
+animation["down_tilt"].layer=2;
+animation["slash1"].speed = 2.0;
+animation["slash2"].speed = 1.3;
+animation["idle"].speed = 0.4;
 
 var walkSpeed:float=6.0;
 var runSpeed:float=9.0;
-var jumpSpeed:float=15.0;
+var jumpSpeed:float=10.0;
 var weight:float=1.0;
 private var moveDirection:Vector3=Vector3.zero;
 static var grounded:boolean=false;
@@ -25,7 +29,11 @@ var shielding:int=0;
 var shieldobject:Transform;
 var helplessleft:int=0;
 static var percent:int=0;
-var stock:int=3;
+var charge : float = 0.0;
+var comboCount : int = 0;
+var timer : float = 0;
+var stock:int=SelectCharacter.stockAmount;
+
 
 function Start() {
 	gameObject.tag = "Player";
@@ -48,7 +56,11 @@ if (lasthit == "Self")
 	KOs[1]++;
 }
 percent = 0;
-
+if (stock == 0)
+{
+	Gui_StatDisplay.player1stock = 0;
+	Destroy (gameObject);
+}
 transform.position = GameObject.Find("P1Spawn").transform.position;
 }
 function LastHit (lasthittemp:String)
@@ -109,9 +121,9 @@ function Update () {
 	
 	if (stock == 0)
 	{
+		Gui_StatDisplay.player1stock=stock;
 		Destroy (gameObject);
 	}
-	
 	controller=GetComponent(CharacterController);
 	flags=controller.Move(moveDirection*Time.deltaTime);	
 	grounded=(flags & CollisionFlags.CollidedBelow) !=0;	
@@ -120,71 +132,100 @@ function Keyupdate()
 {
 	moveDirection.x=Input.GetAxis("P1Horizontal")*(((1-dashing)*walkSpeed)+(dashing*runSpeed));
 	if(!grounded){
-		if (Input.GetButtonDown("P1Jump") && upwait >= 3){
+		if (Input.GetKeyDown(ControlSetup.jumpButton) && upwait >= 3){
 			if (jumpstate != 2)
 			{
 				moveDirection.y=jumpSpeed;
 				jumpstate = 2;
-				animation.CrossFade("midjump");
+				animation.CrossFadeQueued("midjump", 0.3, QueueMode.PlayNow);
+				animation.CrossFadeQueued("falling", 0.3, QueueMode.PlayNow);
 			}
 		}
 	}
 	if(grounded){
-			jumpstate = 0;
-			if (Input.GetButtonDown("P1Jump") && upwait >= 3){
-			moveDirection.y=jumpSpeed;
-			jumpstate = 1;
-			animation.CrossFade("jump");
-		} else {
+		if(animation.IsPlaying("idle"))
+		{
+			if (Input.GetKeyDown(ControlSetup.attackButton) && upcheck ==  1 && grounded)
+			{
+				animation.CrossFadeQueued("up_tilt",0.3,QueueMode.PlayNow);
+				Debug.Log("Up Tilt");
+			}
+			else if(Input.GetKeyDown(ControlSetup.attackButton) && downcheck ==  1 && grounded)
+			{
+				animation.CrossFadeQueued("down_tilt",0.3,QueueMode.PlayNow);
+				Debug.Log("Down Tilt");
+			}
+			else if(Input.GetKeyDown(ControlSetup.attackButton) && (lastxkey ==  "Right" || lastxkey == "Left") && keywait == 1 && grounded)
+			{
+				Debug.Log("Side Tilt");
+			}
+			else if(Input.GetKeyDown(ControlSetup.attackButton))
+			{
+				A_Combo();
+				Debug.Log("slash");
+			}
+		}
+		jumpstate = 0;
+		if (Input.GetKey(ControlSetup.jumpButton) && upwait >= 3){
+		moveDirection.y=jumpSpeed;
+		jumpstate = 1;
+		animation.CrossFadeQueued("jump", 0.3, QueueMode.PlayNow);
+		} else if (Input.GetAxis("P1Horizontal") != 0) {
 			moveDirection.y = 0;
-			animation.CrossFade("walk");
+			if(!animation.IsPlaying("sprint"))
+			{
+				animation.CrossFadeQueued("sprint", 0.3, QueueMode.PlayNow);
+			}
+		} else if (Input.GetAxis("P1Horizontal") == 0) {
+			animation.CrossFadeQueued("idle", 0.3, QueueMode.CompleteOthers);
 		}
 	}
 	
-	if (Input.GetButtonDown("P1Special"))
+	if (Input.GetKeyDown(ControlSetup.specialButton))
 	{
+		print("special activated!");
 		if (upcheck == 1)
 		{
-		Debug.Log("Up Special");
+			Debug.Log("Up Special");
 		} else {
-		if (downcheck == 1)
-		{
-		Debug.Log("Down Special");
-		} else {
-		if (lastxkey == "Right")
-		{
-			if (keywait == 1)
-			{
-			Debug.Log("Side Special");
+			if (downcheck == 1)
+			{	
+				Debug.Log("Down Special");
 			} else {
-		Debug.Log("Neutral Special");
-		}
-		} else {
-		if (lastxkey == "Left")
-		{
-			if (keywait == 1)
-			{
-			Debug.Log("Side Special");
+				if (lastxkey == "Right")
+				{
+					if (keywait == 1)
+					{
+						Debug.Log("Side Sp ecial");
+					} else {
+					Debug.Log("Neutral Special");
+				}
 			} else {
-		Debug.Log("Neutral Special");
-		}
-		}
-		}
-		}
+				if (lastxkey == "Left")
+				{
+					if (keywait == 1)
+					{
+						Debug.Log("Side Special");
+					} else {
+					Debug.Log("Neutral Special");
+					}	
+				}
+			}
+		}	
 		}
 	}
 	
-	if (Input.GetButtonDown("P1Standard"))
-	{
-		animation.CrossFade("punch");
-		if (grounded)
+	
+		/*if (grounded)
 		{
 			if (upcheck == 1)
 			{
+				animation.CrossFadeQueued("up_tilt",0.3,QueueMode.PlayNow);
 				Debug.Log("Up Tilt");
 			} else {
 			if (downcheck == 1)
 			{
+				animation.CrossFadeQueued("down_tilt",0.3,QueueMode.PlayNow);
 				Debug.Log("Down Tilt");
 			} else {
 			if (lastxkey == "Right")
@@ -193,6 +234,7 @@ function Keyupdate()
 				{
 					Debug.Log("Side Tilt");
 				} else {
+				A_Combo();
 				Debug.Log("Neutral 1");
 				}
 			} else {
@@ -202,6 +244,7 @@ function Keyupdate()
 				{
 					Debug.Log("Side Tilt");
 				} else {
+				A_Combo();
 				Debug.Log("Neutral 1");
 				}
 			}
@@ -238,10 +281,9 @@ function Keyupdate()
 		}
 		}
 		}
-		}
-	}
+		}*/
 
-    if (Input.GetButtonDown("P1Shield"))
+    if (Input.GetKeyDown(ControlSetup.shieldButton))
     {
 //        if (!tempshield)
 //        {
@@ -256,14 +298,14 @@ function Keyupdate()
 //        }
     }
 	
-	if (Input.GetButton("P1Crouch"))
+	if (Input.GetKey(ControlSetup.downButton))
 	{
 		downcheck = 1;
 	} else {
 		downcheck = 0;
 	}
 	
-	if (Input.GetButton("P1Jump"))
+	if (Input.GetKey(ControlSetup.jumpButton))
 	{
 		upcheck = 1;
 		upwait = 0;
@@ -272,7 +314,7 @@ function Keyupdate()
 		upwait++;
 	}
 	
-	if (Input.GetAxis("P1Horizontal") > 0)
+	if (Input.GetAxis("P1Horizontal") > 0 && !Input.GetKeyDown(ControlSetup.attackButton))
 	{
 		if ((keywait > 1) && (keywait < 25) && (lastxkey == "Right") && grounded)
 		{
@@ -292,8 +334,7 @@ function Keyupdate()
 		}
 		lastxkey = "Right";
 		keywait = 0;
-	} else {
-		if (Input.GetAxis("P1Horizontal") < 0)
+	} else if (Input.GetAxis("P1Horizontal") < 0 && !Input.GetKeyDown(ControlSetup.attackButton))
 		{
 			if ((keywait > 1) && (keywait < 25) && (lastxkey == "Left") && grounded)
 			{
@@ -313,12 +354,56 @@ function Keyupdate()
 			}
 			lastxkey = "Left";
 			keywait = 0;
-		} else {
-			animation.CrossFade("idle");
 		}
-	}
-	
+		
 	keywait ++;
+	
 }
 
 @script RequireComponent(CharacterController)
+
+function A_Combo(){
+	
+    if (comboCount == 0)
+    {
+    	timer = Time.time;
+        Debug.Log("I served a punch!");
+        //Do something awesome to deliver a punch!
+        
+        animation.CrossFadeQueued("slash1", 0.3, QueueMode.PlayNow);
+        comboCount ++;
+        
+    }
+    else
+    {
+    	if (comboCount == 1 && (Time.time - timer < 1)) {
+    		timer = Time.time;
+        	comboCount = 1;
+        	Debug.Log("I did a combo!");                
+        	//Do something awesome for the combo!
+        	
+       		animation.CrossFadeQueued("slash2",0.3,QueueMode.PlayNow);
+        	comboCount ++;
+    	}
+    	else
+    	{
+    		if(comboCount == 2 && (Time.time - timer < 0.7))
+   			{
+    			comboCount = 0;
+        		Debug.Log("I kicked!");                
+        		//Do something awesome for the combo!
+        		
+        		animation.CrossFadeQueued("flip_kick",0.3,QueueMode.PlayNow);
+        	}
+        	else
+        	{
+        		timer = Time.time;
+        		comboCount = 1;
+        		Debug.Log("Restart Combo");
+        		animation.Stop();
+        		animation.CrossFadeQueued("slash1",0.3,QueueMode.CompleteOthers);
+        	}
+        		
+        }
+    }
+}

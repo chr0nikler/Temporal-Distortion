@@ -1,71 +1,147 @@
 var backImage : Texture2D;
 var section : int = 0;
-var teamOrFFAImage : Texture2D = ffaImage;
+var teamOrFFAImage : Texture2D;
+teamOrFFAImage = ffaImage;
 var ffaImage : Texture2D;
 var teamImage : Texture2D;
-var teamOrFFA : int = 0;
+static var teamOrFFA : int = 0;
+var rulesImage : Texture2D;
 var arrowLeft : Texture2D;
 var arrowRight : Texture2D;
 var trainingTitleImage : Texture2D;
-var stockAmount : int = 5;
+static var stockAmount : int = 5;
 var timeMinutes : int = 0;
 var timeSecondsTens : int = 0;
 var timeSecondsOnes : int = 0;
-var timeTotal : int = 0;
+static var timeTotal : int = 0;
 var timedStockAmount : int = 0;
-var widgetAmount : int = 0;
+static var widgetAmount : int = 0;
 var handicapString = "No";
-var handicap = 0;
+static var handicap = 0; //No Handicap
 static var damageRatio : float = 1.0;
 var uDDBallString = "Yes";
-var uDDBall = 1;
+static var uDDBall = 1; //Allows UDD Ball
 var friendlyFireString = "Off";
-var friendlyFire = 0;
+static var friendlyFire = 0; //Doesn't allow Friendly Fire
 var canPauseString = "On";
-var canPause = 1;
+static var canPause = 1; //Allows Pausing
 var scoreDisplayString = "Off";
-var scoreDisplay = 0;
-var selfDestructPenalty = -1;
+static var scoreDisplay = 0; //No score display
+static var selfDestructPenalty = -1; //Penalty for Self-Destructs
 var damageGaugeString = "On";
-var damageGauge = 1;
+static var damageGauge = 1; //Show damage gauge
 var selectedMaxCombo = 0;
-var tahuMaxCombo = 0;
-var kopakaMaxCombo = 0;
+static var tahuMaxCombo = 0; //Sets Tahu's Max Combo
+static var kopakaMaxCombo = 0; //Sets Kopaka's Max Combo
 var totalCombo = 0;
-var player1Status = 1;
-var player2Status = 2;
-var player3Status = 0;
-var player4Status = 0;
+static var player1Status = 1; //Player 1 Type [0 = None, 1 = Player, 2 = CPU]
+static var player2Status = 2; //Same as above for P2
+static var player3Status = 0; //Same as above for P3
+static var player4Status = 0; //Same as above for P4
 var player1StatusTitle = "Player 1";
 var player2StatusTitle = "CPU";
 var player3StatusTitle = "None";
 var player4StatusTitle = "None";
-var numberOfPlayers = 0;
-var player1Character = 0;
-var player2Character = 0;
-var player3Character = 0;
-var player4Character = 0;
-var player1Completed = 0;
-var player2Completed = 0;
-var player3Completed = 0;
-var player4Completed = 0;
-var trainingPlayerCharacter = 3;
+static var numberOfPlayers = 0; //Sets the number of players
+static var player1Character = 0; //Sets Player 1 Character [0 = None, 1 = Tahu, 2 = Kopaka, 3 = Random]
+static var player2Character = 0; //Same as above for P2
+static var player3Character = 0; //Same as above for P3
+static var player4Character = 0; //Same as above for P4
+static var trainingPlayerCharacter = 0; //Same as above for Training Player
+static var trainingComputerCharacter = 3; //Same as above for Trainer
+static var player1Completed = 0;
+static var player2Completed = 0;
+static var player3Completed = 0;
+static var player4Completed = 0;
 var tahuSelectionImage : Texture2D;
 var kopakaSelectionImage : Texture2D;
 var randomSelectionImage : Texture2D;
-var tahuSelectedImage : Texture2D;
-var kopakaSelectedImage : Texture2D;
-var randomSelectedImage : Texture2D;
+//Tahu Selected Images
+var tahuSelectedImageRegular : Texture2D;
+var tahuSelectedImageShadow : Texture2D;
+var tahuSelectedImageInverse : Texture2D;
+var tahuSelectedImageReverse : Texture2D;
+var tahuSelectedImageGoldenMask : Texture2D;
+var tahuSelectedImageRed : Texture2D;
+var tahuSelectedImageLightRed : Texture2D;
+var tahuSelectedImageDarkRed : Texture2D;
+var tahuSelectedImageGreen : Texture2D;
+var tahuSelectedImageLightGreen : Texture2D;
+var tahuSelectedImageDarkGreen : Texture2D;
+var tahuSelectedImageBlue : Texture2D;
+var tahuSelectedImageLightBlue : Texture2D;
+var tahuSelectedImageDarkBlue : Texture2D;
+//Kopaka Selected Images
+var kopakaSelectedImage : Texture2D; //This is the image that will appear if Kopaka is selected (variable).
+kopakaSelectedImage = kopakaSelectedImageRegular;
+var kopakaSelectedImageRegular : Texture2D;
+var kopakaSelectedImageShadow : Texture2D;
+var kopakaSelectedImageInverse : Texture2D;
+var kopakaSelectedImageReverse : Texture2D;
+var kopakaSelectedImageGoldenMask : Texture2D;
+var kopakaSelectedImageRed : Texture2D;
+var kopakaSelectedImageLightRed : Texture2D;
+var kopakaSelectedImageDarkRed : Texture2D;
+var kopakaSelectedImageGreen : Texture2D;
+var kopakaSelectedImageLightGreen : Texture2D;
+var kopakaSelectedImageDarkGreen : Texture2D;
+var kopakaSelectedImageBlue : Texture2D;
+var kopakaSelectedImageLightBlue : Texture2D;
+var kopakaSelectedImageDarkBlue : Texture2D;
+//Random Selected Image
+var randomSelectedImage : Texture2D; //This is the image that will appear if Random is selected (constant)
+var noneSelectedPlayer1Image : Texture2D;
+var noneSelectedPlayer2Image : Texture2D;
+var noneSelectedPlayer3Image : Texture2D;
+var noneSelectedPlayer4Image : Texture2D;
+var noneSelectedTrainingPlayerImage : Texture2D;
+var noneSelectedTrainingComputerImage : Texture2D;
+var noPlayerImage : Texture2D;
 var player1Image : Texture2D;
 var player2Image : Texture2D;
 var player3Image : Texture2D;
 var player4Image : Texture2D;
-var player1Costume = 0;
-var player2Costume = 0;
-var player3Costume = 0;
-var player4Costume = 0;
+var trainingPlayerImage : Texture2D;
+var trainingComputerImage : Texture2D;
+static var player1Costume = 1; //Sets Player 1 Costume [1 = Normal, 2 = Shadow, 3 = Inverse, 4 = Reverse, 5 = Golden Mask]
+static var player2Costume = 1; //Same as above for P2
+static var player3Costume = 1; //Same as above for P3
+static var player4Costume = 1; //Same as above for P4
+static var trainingPlayerCostume = 1; //Same as above for Training Player
+static var trainingComputerCostume = 1; //Same as above for Trainer
 var player : int = 0;
-var randomCharacter : int;
+static var randomCharacter : int; //Use this to set what Random equals
+var player1NameOrDifficultyScroll : Vector2; //Use for ScrollView Function
+var player2NameOrDifficultyScroll : Vector2;
+var player3NameOrDifficultyScroll : Vector2;
+var player4NameOrDifficultyScroll : Vector2;
+var trainingPlayerNameScroll : Vector2; //Same as above but only for the Training Player's name
+var player1NameButtonBox : int = 0;
+var player2NameButtonBox : int = 0;
+var player3NameButtonBox : int = 0;
+var player4NameButtonBox : int = 0;
+var trainingPlayerNameButtonBox : int = 0;
+var redTeamP1 = 0;
+var redTeamP2 = 0;
+var redTeamP3 = 0;
+var redTeamP4 = 0;
+var redTeamAmount = 0;
+var redTeamViable = 0;
+var greenTeamP1 = 0;
+var greenTeamP2 = 0;
+var greenTeamP3 = 0;
+var greenTeamP4 = 0;
+var greenTeamAmount = 0;
+var greenTeamViable = 0;
+var blueTeamP1 = 0;
+var blueTeamP2 = 0;
+var blueTeamP3 = 0;
+var blueTeamP4 = 0;
+var blueTeamAmount = 0;
+var blueTeamViable = 0;
+var numberOfTeams = 0;
+
+
 
 function OnGUI() {
 
@@ -84,11 +160,19 @@ if(DemoMenu.menu == 7)
 				{
 					teamOrFFAImage = teamImage;
 					teamOrFFA = 2;
+					player1Costume = 1;
+					player2Costume = 1;
+					player3Costume = 1;
+					player4Costume = 1;
 				}
 			if (teamOrFFA == 1)
 				{
 					teamOrFFAImage = ffaImage;
 					teamOrFFA = 0;
+					player1Costume = 1;
+					player2Costume = 1;
+					player3Costume = 1;
+					player4Costume = 1;
 				}
 			if (teamOrFFA == 2)
 				{
@@ -96,7 +180,7 @@ if(DemoMenu.menu == 7)
 				}
 			}		
 
-		if (GUI.Button (Rect (Screen.width*.4,10,Screen.width*.55,Screen.height/15),"Rules"))
+		if (GUI.Button (Rect (Screen.width*.4,10,Screen.width*.55,Screen.height/15), rulesImage))
 			{
 				section = 1;
 			}
@@ -112,89 +196,322 @@ if(DemoMenu.menu == 7)
 		GUI.Box (Rect (Screen.width*.525,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"Player 3");
 		GUI.Box (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"Player 4");*/
 		
-		if (GUI.Button (Rect (Screen.width*.05,Screen.height*.1,Screen.width*.3,Screen.height*.4),"Tahu")) //Creates Tahu Selection Button, as well as assigning the current selection to it
+		if (GUI.Button (Rect (Screen.width*.05,Screen.height*.1,Screen.width*.3,Screen.height*.4), tahuSelectionImage)) //Creates Tahu Selection Button, as well as assigning the current selection to it
 		{
 			if (player == 1)
 				{
-					player1Character = 1;
-					player1Completed = 1;
+					if (player1Status > 0)
+					{
+						player1Character = 1;
+						player1Completed = 1;
+					}
 				}
 			if (player == 2)
 				{
-					player2Character = 1;
-					player2Completed = 1;
+					if (player2Status > 0)
+					{
+						player2Character = 1;
+						player2Completed = 1;
+					}
 				}
 			if (player == 3)
 				{
-					player3Character = 1;
-					player3Completed = 1;
+					if (player3Status > 0)
+					{
+						player3Character = 1;
+						player3Completed = 1;
+					}
 				}
 			if (player == 4)
 				{
-					player4Character = 1;
-					player4Completed = 1;
+					if (player4Status > 0)
+					{
+						player4Character = 1;
+						player4Completed = 1;
+					}
 				}
 		}
-		if (GUI.Button (Rect (Screen.width*.35,Screen.height*.1,Screen.width*.3,Screen.height*.4),"Kopaka")) //Creates Kopaka Selection Button, as well as assigning the current selection to it
+		if (GUI.Button (Rect (Screen.width*.35,Screen.height*.1,Screen.width*.3,Screen.height*.4), kopakaSelectionImage)) //Creates Kopaka Selection Button, as well as assigning the current selection to it
 		{
 			if (player == 1)
 				{
-					player1Character = 2;
-					player1Completed = 1;
+					if (player1Status > 0)
+					{
+						player1Character = 2;
+						player1Completed = 1;
+					}
 				}
 			if (player == 2)
 				{
-					player2Character = 2;
-					player2Completed = 1;
+					if (player2Status > 0)
+					{
+						player2Character = 2;
+						player2Completed = 1;
+					}
 				}
 			if (player == 3)
 				{
-					player3Character = 2;
-					player3Completed = 1;
+					if (player3Status > 0)
+					{
+						player3Character = 2;
+						player3Completed = 1;
+					}
 				}
 			if (player == 4)
 				{
-					player4Character = 2;
-					player4Completed = 1;
+					if (player4Status > 0)
+					{
+						player4Character = 2;
+						player4Completed = 1;
+					}
 				}
 		}
-		if (GUI.Button (Rect (Screen.width*.65,Screen.height*.1,Screen.width*.3,Screen.height*.4),"Random")) //Creates Random Selection Button, as well as assigning the current selection to it
+		if (GUI.Button (Rect (Screen.width*.65,Screen.height*.1,Screen.width*.3,Screen.height*.4),randomSelectionImage)) //Creates Random Selection Button, as well as assigning the current selection to it
 		{
 			if (player == 1)
 				{
-					player1Character = 3;
-					player1Completed = 1;
+					if (player1Status > 0)
+					{
+						player1Character = 3;
+						player1Completed = 1;
+					}
 				}
 			if (player == 2)
 				{
-					player2Character = 3;
-					player2Completed = 1;
+					if (player2Status > 0)
+					{
+						player2Character = 3;
+						player2Completed = 1;
+					}
 				}
 			if (player == 3)
 				{
-					player3Character = 3;
-					player3Completed = 1;
+					if (player3Status > 0)
+					{
+						player3Character = 3;
+						player3Completed = 1;
+					}
 				}
 			if (player == 4)
 				{
-					player4Character = 3;
-					player4Completed = 1;
+					if (player4Status > 0)
+					{
+						player4Character = 3;
+						player4Completed = 1;
+					}
 				}
 		}
 		
 		//Creates the Player sections at the bottom
 		
-		if (GUI.Button (Rect (Screen.width*.05,Screen.height*.9,Screen.width*.125,Screen.height*.05),player1StatusTitle))
+		//Player 1 Section
+		if (player1NameButtonBox == 0)
+		{
+			if(GUI.Button (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player1Image))
+			{
+				player = 1;
+				print ("Player is " + player);
+			}
+			if (GUI.Button (Rect (Screen.width*.05,Screen.height*.9,Screen.width*.125,Screen.height*.05),player1StatusTitle))
 			{
 				player1Status++;
 			}
-		if (GUI.Button (Rect (Screen.width*.175,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player1Costume))
+			if (player1Status == 1 || player1Status == 2)
 			{
-				player = 1;
-				costumechange(player);
+				if (GUI.Button (Rect (Screen.width*.175,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player1Costume))
+				{
+					player = 1;
+					costumechange(player);
+				}
+				if (GUI.Button (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+				{
+					player1NameButtonBox = 1;
+				}
 			}
-		GUI.Box (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");
-		if (GUI.Button (Rect (Screen.width*.2875,Screen.height*.9,Screen.width*.125,Screen.height*.05),player2StatusTitle))
+		} //STILL NEED TO ADD ARRAY SO BOTH NAMES AND DIFFICULTIES CAN BE ACCESSED.
+		if (player1NameButtonBox == 1) 
+		{
+			GUILayout.BeginArea (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
+			GUILayout.BeginVertical ("box");
+			player1NameOrDifficultyScroll = GUILayout.BeginScrollView (player1NameOrDifficultyScroll);
+			for (var player1NameButtons : int = 1; player1NameButtons < 16; player1NameButtons++)
+			{
+				if (player1Status == 1)
+				{
+					if (GUILayout.Button("Name " + player1NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player1NameButtonBox = 0;
+					}
+				}
+				if (player1Status == 2)
+				{
+					if (GUILayout.Button("Difficulty " + player1NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player1NameButtonBox = 0;
+					}
+				}	
+			}
+			GUILayout.EndScrollView();
+			GUILayout.EndVertical();
+			GUILayout.EndArea();
+		}
+		//Player 2 Section
+		if (player2NameButtonBox == 0)
+		{
+			if(GUI.Button (Rect (Screen.width*.2875,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player2Image))
+			{
+				player = 2;
+				print ("Player is " + player);
+			}
+			if (GUI.Button (Rect (Screen.width*.2875,Screen.height*.9,Screen.width*.125,Screen.height*.05),player2StatusTitle))
+			{
+				player2Status++;
+			}
+			if (player2Status == 1 || player2Status == 2)
+			{
+				if (GUI.Button (Rect (Screen.width*.4125,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player2Costume))
+				{
+					player = 2;
+					costumechange(player);
+				}
+				if (GUI.Button (Rect (Screen.width*.44375,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+				{
+					player2NameButtonBox = 1;
+				}
+			}
+		}
+		if (player2NameButtonBox == 1) 
+		{
+			GUILayout.BeginArea (Rect (Screen.width*.2875,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
+			GUILayout.BeginVertical ("box");
+			player2NameOrDifficultyScroll = GUILayout.BeginScrollView (player2NameOrDifficultyScroll);
+			for (var player2NameButtons : int = 1; player2NameButtons < 16; player2NameButtons++)
+			{
+				if (player2Status == 1)
+				{
+					if (GUILayout.Button("Name " + player2NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player2NameButtonBox = 0;
+					}
+				}
+				if (player2Status == 2)
+				{
+					if (GUILayout.Button("Difficulty " + player2NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player2NameButtonBox = 0;
+					}
+				}	
+			}
+			GUILayout.EndScrollView();
+			GUILayout.EndVertical();
+			GUILayout.EndArea(); 
+		} 
+		
+		//Player 3 Section
+		if (player3NameButtonBox == 0)
+		{
+			if(GUI.Button (Rect (Screen.width*.525,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player3Image))
+			{
+				player = 3;
+				print ("Player is " + player);
+			}
+			if (GUI.Button (Rect (Screen.width*.525,Screen.height*.9,Screen.width*.125,Screen.height*.05),player3StatusTitle))
+			{
+				player3Status++;
+			}
+			if (player3Status == 1 || player3Status == 2)
+			{
+				if (GUI.Button (Rect (Screen.width*.65,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player3Costume))
+				{
+					player = 3;
+					costumechange(player);
+				}
+				if (GUI.Button (Rect (Screen.width*.68125,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+				{
+					player3NameButtonBox = 1;
+				}
+			}
+		} 
+		if (player3NameButtonBox == 1) 
+		{
+			GUILayout.BeginArea (Rect (Screen.width*.525,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
+			GUILayout.BeginVertical ("box");
+			player3NameOrDifficultyScroll = GUILayout.BeginScrollView (player3NameOrDifficultyScroll);
+			for (var player3NameButtons : int = 1; player3NameButtons < 16; player3NameButtons++)
+			{
+				if (player3Status == 1)
+				{
+					if (GUILayout.Button("Name " + player3NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player3NameButtonBox = 0;
+					}
+				}
+				if (player3Status == 2)
+				{
+					if (GUILayout.Button("Difficulty " + player3NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player3NameButtonBox = 0;
+					}
+				}	
+			}
+			GUILayout.EndScrollView();
+			GUILayout.EndVertical();
+			GUILayout.EndArea(); 
+		} 
+		
+		//Player 4 Section
+		if (player4NameButtonBox == 0)
+		{
+			if(GUI.Button (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player4Image))
+			{
+				player = 4;
+				print ("Player is " + player);
+			}
+			if (GUI.Button (Rect (Screen.width*.7625,Screen.height*.9,Screen.width*.125,Screen.height*.05),player4StatusTitle))
+			{
+				player4Status++;
+			}
+			if (player4Status == 1 || player4Status == 2)
+			{
+				if (GUI.Button (Rect (Screen.width*.8875,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player4Costume))
+				{
+					player = 4;
+					costumechange(player);
+				}
+				if (GUI.Button (Rect (Screen.width*.91875,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+				{
+					player4NameButtonBox = 1;
+				}
+			}
+		} 
+		if (player4NameButtonBox == 1) 
+		{
+			GUILayout.BeginArea (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
+			GUILayout.BeginVertical ("box");
+			player4NameOrDifficultyScroll = GUILayout.BeginScrollView (player4NameOrDifficultyScroll);
+			for (var player4NameButtons : int = 1; player4NameButtons < 16; player4NameButtons++)
+			{
+				if (player4Status == 1)
+				{
+					if (GUILayout.Button("Name " + player4NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player4NameButtonBox = 0;
+					}
+				}
+				if (player4Status == 2)
+				{
+					if (GUILayout.Button("Difficulty " + player4NameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						player4NameButtonBox = 0;
+					}
+				}	
+			}
+			GUILayout.EndScrollView();
+			GUILayout.EndVertical();
+			GUILayout.EndArea(); 
+		}
+		
+		/*if (GUI.Button (Rect (Screen.width*.2875,Screen.height*.9,Screen.width*.125,Screen.height*.05),player2StatusTitle))
 			{
 				player2Status++;
 			}
@@ -203,8 +520,9 @@ if(DemoMenu.menu == 7)
 				player = 2;
 				costumechange(player);
 			}
-		GUI.Box (Rect (Screen.width*.44375,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");
-		if (GUI.Button (Rect (Screen.width*.525,Screen.height*.9,Screen.width*.125,Screen.height*.05),player3StatusTitle))
+		GUI.Box (Rect (Screen.width*.44375,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"); */
+		
+		/*if (GUI.Button (Rect (Screen.width*.525,Screen.height*.9,Screen.width*.125,Screen.height*.05),player3StatusTitle))
 			{
 				player3Status++;
 			}
@@ -213,8 +531,9 @@ if(DemoMenu.menu == 7)
 				player = 3;
 				costumechange(player);
 			}
-		GUI.Box (Rect (Screen.width*.68125,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");
-		if (GUI.Button (Rect (Screen.width*.7625,Screen.height*.9,Screen.width*.125,Screen.height*.05),player4StatusTitle))
+		GUI.Box (Rect (Screen.width*.68125,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"); */
+		
+		/*if (GUI.Button (Rect (Screen.width*.7625,Screen.height*.9,Screen.width*.125,Screen.height*.05),player4StatusTitle))
 			{
 				player4Status++;
 			}
@@ -223,44 +542,60 @@ if(DemoMenu.menu == 7)
 				player = 4;
 				costumechange(player);
 			}
-		GUI.Box (Rect (Screen.width*.91875,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");	
+		GUI.Box (Rect (Screen.width*.91875,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");*/	
 			
 		
-		if(GUI.Button (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player1Image))
-		{
-			player = 1;
-			print ("Player is " + player);
-		}
-		else if(GUI.Button (Rect (Screen.width*.2875,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player2Image))
+		
+		/* if(GUI.Button (Rect (Screen.width*.2875,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player2Image))
 		{
 			player = 2;
 			print ("Player is " + player);
-		}
-		else if(GUI.Button (Rect (Screen.width*.525,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player3Image))
+		} */
+		
+		/*if(GUI.Button (Rect (Screen.width*.525,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player3Image))
 		{
 			player = 3;
 			print ("Player is " + player);
-		}
-		else if(GUI.Button (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player4Image))
+		}*/
+		
+		/*if(GUI.Button (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player4Image))
 		{
 			player = 4;
 			print ("Player is " + player);
-		}
+		}*/
 		
 		
 	//Begin the game box
-		if (numberOfPlayers > 1)
+		if (teamOrFFA == 0)
 		{
-			if (GUI.Button (Rect (Screen.width*.05,Screen.height*.5,Screen.width*.9,Screen.height*.05), "Click to Start!"))
+			if (numberOfPlayers > 1)
 			{
-				print ("The game has started!");
-				//Load Stage Here
+				print(numberOfPlayers);
+				print(player1Completed + " " + player2Completed +  " " + player3Completed + " " + player4Completed);
+				if (GUI.Button (Rect (Screen.width*.05,Screen.height*.5,Screen.width*.9,Screen.height*.05), "Click to Start!"))
+				{
+					print ("The game has started!");
+					Application.LoadLevel("demo1stagetestv2"); //
+				}
+			}
+		}
+		if (teamOrFFA == 1)
+		{
+			if (numberOfTeams > 1)
+			{
+				if (GUI.Button (Rect (Screen.width*.05,Screen.height*.5,Screen.width*.9,Screen.height*.05), "Click to Start!"))
+				{
+					print ("The game has started!");
+					Application.LoadLevel("demo1stagetest"); //
+				}
 			}
 		}
 		
 		
-	}
 		
+	}
+	
+	//Rules		
 	if (section == 1)
 		{
 		if (GUI.Button (Rect(10,10,Screen.width*.1,Screen.height/15),backImage))
@@ -348,7 +683,8 @@ if(DemoMenu.menu == 7)
 				section = 2;
 			}
 		}
-		
+	
+	//More Rules	
 	if (section == 2)
 		{
 		if (GUI.Button (Rect(10,10,Screen.width*.1,Screen.height/15),backImage))
@@ -420,7 +756,7 @@ if(DemoMenu.menu == 7)
 		}	
 	}
 	
-	
+//Training Menu	
 if (DemoMenu.menu == 8)
 	{
 	if (GUI.Button (Rect (10,10,Screen.width*.1,Screen.height/15),backImage))
@@ -436,80 +772,125 @@ if (DemoMenu.menu == 8)
 	GUI.Box (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"Player 1");
 	GUI.Box (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"CPU"); */
 
-	if (GUI.Button (Rect (Screen.width*.05,Screen.height*.1,Screen.width*.3,Screen.height*.4),"Tahu")) //Creates Tahu Selection Button, as well as assigning the current selection to it
+	if (GUI.Button (Rect (Screen.width*.05,Screen.height*.1,Screen.width*.3,Screen.height*.4),tahuSelectionImage)) //Creates Tahu Selection Button, as well as assigning the current selection to it
 		{
-			if (player == 1)
+			if (player == 5)
 				{
-					player1Character = 1;
-					player1Completed = 1;
+					trainingPlayerCharacter = 1;
 				}
-			if (player == 2)
+			if (player == 6)
 				{
-					player2Character = 1;
-					player2Completed = 1;
+					trainingComputerCharacter = 1;
 				}
-			if (player == 3)
-				{
-					player3Character = 1;
-					player3Completed = 1;
-				}
-			if (player == 4)
-				{
-					player4Character = 1;
-					player4Completed = 1;
-				}
+			
 		}
-		if (GUI.Button (Rect (Screen.width*.35,Screen.height*.1,Screen.width*.3,Screen.height*.4),"Kopaka")) //Creates Kopaka Selection Button, as well as assigning the current selection to it
+		if (GUI.Button (Rect (Screen.width*.35,Screen.height*.1,Screen.width*.3,Screen.height*.4),kopakaSelectionImage)) //Creates Kopaka Selection Button, as well as assigning the current selection to it
 		{
-			if (player == 1)
+			if (player == 5)
 				{
-					player1Character = 2;
-					player1Completed = 1;
+					trainingPlayerCharacter = 2;
 				}
-			if (player == 2)
+			if (player == 6)
 				{
-					player2Character = 2;
-					player2Completed = 1;
+					trainingComputerCharacter = 2;
 				}
-			if (player == 3)
-				{
-					player3Character = 2;
-					player3Completed = 1;
-				}
-			if (player == 4)
-				{
-					player4Character = 2;
-					player4Completed = 1;
-				}
+			
 		}
-		if (GUI.Button (Rect (Screen.width*.65,Screen.height*.1,Screen.width*.3,Screen.height*.4),"Random")) //Creates Random Selection Button, as well as assigning the current selection to it
+		if (GUI.Button (Rect (Screen.width*.65,Screen.height*.1,Screen.width*.3,Screen.height*.4),randomSelectionImage)) //Creates Random Selection Button, as well as assigning the current selection to it
 		{
-			if (player == 1)
+			if (player == 5)
 				{
-					player1Character = 3;
-					player1Completed = 1;
+					trainingPlayerCharacter = 3;
 				}
-			if (player == 2)
+			if (player == 6)
 				{
-					player2Character = 3;
-					player2Completed = 1;
+					trainingComputerCharacter = 3;
 				}
-			if (player == 3)
-				{
-					player3Character = 3;
-					player3Completed = 1;
-				}
-			if (player == 4)
-				{
-					player4Character = 3;
-					player4Completed = 1;
-				}
+			
 		}
-	GUI.Button (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"Player 1");
-	GUI.Button (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"CPU");
+	//GUI.Button (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"Player 1");
+	//GUI.Button (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.4),"CPU");
 	
 	GUI.Box (Rect (Screen.width*.2875,Screen.height*.625,Screen.width*.425,Screen.height*.1),"Max Combo: " + selectedMaxCombo);
 	GUI.Box (Rect (Screen.width*.2875,Screen.height*.775,Screen.width*.425,Screen.height*.1),"Total Combo: " + totalCombo);		
+	
+	//Training Player Section
+		if (trainingPlayerNameButtonBox == 0)
+		{
+			if(GUI.Button (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.35), trainingPlayerImage))
+			{
+				player = 5;
+				print ("Player is " + player);
+			}
+			GUI.Box (Rect (Screen.width*.05,Screen.height*.9,Screen.width*.125,Screen.height*.05), "Player");
+
+				if (GUI.Button (Rect (Screen.width*.175,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + trainingPlayerCostume))
+				{
+					player = 5;
+					costumechange(player);
+				}
+				if (GUI.Button (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+				{
+					trainingPlayerNameButtonBox = 1;
+				}
+		} 
+		if (trainingPlayerNameButtonBox == 1) //Also, add same settings to the other Player sections
+		{
+			GUILayout.BeginArea (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
+			GUILayout.BeginVertical ("box");
+			trainingPlayerNameScroll = GUILayout.BeginScrollView (trainingPlayerNameScroll);
+			for (var trainingPlayerNameButtons : int = 1; trainingPlayerNameButtons < 16; trainingPlayerNameButtons++)
+			{
+					if (GUILayout.Button("Name " + trainingPlayerNameButtons, GUILayout.Height(Screen.height*.1))) //Here
+					{
+						trainingPlayerNameButtonBox = 0;
+					}	
+			}
+			GUILayout.EndScrollView();
+			GUILayout.EndVertical();
+			GUILayout.EndArea();
+		}//Do something with the Trainer
+	
+	/*if(GUI.Button (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.35), player1Image))
+		{
+			player = 5;
+			print ("Player is " + player);
+		}*/
+	
+	if(GUI.Button (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.35), trainingComputerImage))
+		{
+			player = 6;
+			print ("Player is " + player);
+		}
+	
+	/*GUI.Box (Rect (Screen.width*.05,Screen.height*.9,Screen.width*.125,Screen.height*.05),"Player");
+				
+			
+		if (GUI.Button (Rect (Screen.width*.175,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + trainingPlayerCostume))
+			{
+				player = 5;
+				costumechange(player);
+			}
+		GUI.Box (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");*/
+	
+	GUI.Box (Rect (Screen.width*.7625,Screen.height*.9,Screen.width*.125,Screen.height*.05),"Trainer");
+			
+		if (GUI.Button (Rect (Screen.width*.8875,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + trainingComputerCostume))
+			{
+				player = 6;
+				costumechange(player);
+			}
+		GUI.Box (Rect (Screen.width*.91875,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name");
+	
+	//Creates stage load box
+	if (trainingPlayerCharacter > 0 && trainingComputerCharacter > 0)
+		{
+			if (GUI.Button (Rect (Screen.width*.05,Screen.height*.5,Screen.width*.9,Screen.height*.05), "Click to Start!"))
+			{
+				print ("Training has started!");
+				//Load Stage Here
+			}
+		}
 	
 	}	
 }
@@ -522,7 +903,7 @@ function costumechange(player)
 		{
 			if (player1Costume == 5) //restart numbering
 			{
-				player1Costume = 0; //0=Normal, 1=Shadow, 2=Inverse, 3=Reverse, 4=Gold Mask (This will be adjusted for full game)
+				player1Costume = 0; //1=Normal, 2=Shadow, 3=Inverse, 4=Reverse, 5=Gold Mask (This will be adjusted for full game)
 			}
 				player1Costume++;
 				print("Player 1 Costume is " + player1Costume); //change player costume every click
@@ -557,6 +938,8 @@ function costumechange(player)
 				player4Costume++;
 				print ("Player 4 Costume is " + player4Costume);
 		}
+		
+		
 				
 	}
 	
@@ -566,7 +949,7 @@ function costumechange(player)
 		{
 			if (player1Costume == 3) //restart numbering
 			{
-				player1Costume = 0; //0=Red, 1=Green, 2=Blue (This may be adjusted for full game)
+				player1Costume = 0; //1=Red, 2=Green, 3=Blue (This may be adjusted for full game)
 			}
 				player1Costume++;
 				print("Player 1 Team is " + player1Costume); //change player costume every click
@@ -603,6 +986,27 @@ function costumechange(player)
 		}
 				
 	}
+	
+	//Training Mode Costumes
+	else if (player == 5) //if already on training player
+		{
+			if (trainingPlayerCostume == 5)
+			{
+				trainingPlayerCostume = 0; //Same as multiplayer values
+			}
+				trainingPlayerCostume++;
+				print ("Player Costume is " + trainingPlayerCostume);
+		}
+		
+	else if (player == 6) //if already on trainer
+		{
+			if (trainingComputerCostume == 5)
+			{
+				trainingComputerCostume = 0; //Same as multiplayer values
+			}
+				trainingComputerCostume++;
+				print ("Player Costume is " + trainingComputerCostume);
+		}
 
 }
 		
@@ -838,6 +1242,404 @@ if (player4Character == 0)
 	{ player4Completed = 0; }
 
 	
+//Player Selection Images (Fight!)
+//Player 1 Selection Images
+if (player1Status == 0)
+	{player1Image = noPlayerImage;}
+if (player1Status != 0 && player1Character == 0)
+	{player1Image = noneSelectedPlayer1Image;}
+if (player1Character == 1) 
+{
+	if (teamOrFFA == 0)
+	{
+		if (player1Costume == 1)
+			{player1Image = tahuSelectedImageRegular;}
+		if (player1Costume == 2)
+			{player1Image = tahuSelectedImageShadow;}
+		if (player1Costume == 3)
+			{player1Image = tahuSelectedImageInverse;}
+		if (player1Costume == 4)
+			{player1Image = tahuSelectedImageReverse;}
+		if (player1Costume == 5)
+			{player1Image = tahuSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1)
+	{
+		if (player1Costume == 1)
+			{player1Image = tahuSelectedImageRed;}
+		if (player1Costume == 2)
+			{player1Image = tahuSelectedImageGreen;}
+		if (player1Costume == 3)
+			{player1Image = tahuSelectedImageBlue;}
+	}
+}
+if (player1Character == 2)
+{
+	if (teamOrFFA == 0) 
+	{
+		if (player1Costume == 1)
+			{player1Image = kopakaSelectedImageRegular;}
+		if (player1Costume == 2)
+			{player1Image = kopakaSelectedImageShadow;}
+		if (player1Costume == 3)
+			{player1Image = kopakaSelectedImageInverse;}
+		if (player1Costume == 4)
+			{player1Image = kopakaSelectedImageReverse;}
+		if (player1Costume == 5)
+			{player1Image = kopakaSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1)
+	{
+		if (player1Costume == 1)
+			{player1Image = kopakaSelectedImageRed;}
+		if (player1Costume == 2)
+			{player1Image = kopakaSelectedImageGreen;}
+		if (player1Costume == 3)
+			{player1Image = kopakaSelectedImageBlue;}
+	}
+}
+if (player1Character == 3)
+	{player1Image = randomSelectedImage;}
+	
+//Player 2 Selection Images
+if (player2Status == 0)
+	{player2Image = noPlayerImage;}
+if (player2Status != 0 && player2Character == 0)
+	{player2Image = noneSelectedPlayer2Image;}
+if (player2Character == 1) 
+{
+	if (teamOrFFA == 0)
+	{
+		if (player2Costume == 1)
+			{player2Image = tahuSelectedImageRegular;}
+		if (player2Costume == 2)
+			{player2Image = tahuSelectedImageShadow;}
+		if (player2Costume == 3)
+			{player2Image = tahuSelectedImageInverse;}
+		if (player2Costume == 4)
+			{player2Image = tahuSelectedImageReverse;}
+		if (player2Costume == 5)
+			{player2Image = tahuSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1) //I'm unhappy with my current way of assigning Lighter and Darker variants, but it will work for now...
+	{ //This unhappiness is because this system will always give player 1 the normal costume, rather than the first to choose it.
+		if (player2Costume == 1 && (player1Character != 1 || player1Costume != 1))
+			{player2Image = tahuSelectedImageRed;}
+		if (player2Costume == 1 && player1Character == 1 && player1Costume == 1)
+			{player2Image = tahuSelectedImageLightRed;}
+		if (player2Costume == 2 && (player1Character != 1 || player1Costume != 2))
+			{player2Image = tahuSelectedImageGreen;}
+		if (player2Costume == 2 && player1Character == 1 && player1Costume == 2)
+			{player2Image = tahuSelectedImageLightGreen;}
+		if (player2Costume == 3 && (player1Character != 1 || player1Costume != 3))
+			{player2Image = tahuSelectedImageBlue;}
+		if (player2Costume == 3 && player1Character == 1 && player1Costume == 3)
+			{player2Image = tahuSelectedImageLightBlue;}
+	}
+}
+if (player2Character == 2)
+{
+	if (teamOrFFA == 0) 
+	{
+		if (player2Costume == 1)
+			{player2Image = kopakaSelectedImageRegular;}
+		if (player2Costume == 2)
+			{player2Image = kopakaSelectedImageShadow;}
+		if (player2Costume == 3)
+			{player2Image = kopakaSelectedImageInverse;}
+		if (player2Costume == 4)
+			{player2Image = kopakaSelectedImageReverse;}
+		if (player2Costume == 5)
+			{player2Image = kopakaSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1) //Same comment as the one for Tahu
+	{
+		if (player2Costume == 1 && (player1Character != 2 || player1Costume != 1))
+			{player2Image = kopakaSelectedImageRed;}
+		if (player2Costume == 1 && player1Character == 2 && player1Costume == 1)
+			{player2Image = kopakaSelectedImageLightRed;}
+		if (player2Costume == 2 && (player1Character != 2 || player1Costume != 2))
+			{player2Image = kopakaSelectedImageGreen;}
+		if (player2Costume == 2 && player1Character == 2 && player1Costume == 2)
+			{player2Image = kopakaSelectedImageLightGreen;}
+		if (player2Costume == 3 && (player1Character != 2 || player1Costume != 3))
+			{player2Image = kopakaSelectedImageBlue;}
+		if (player2Costume == 3 && player1Character == 2 && player1Costume == 3)
+			{player2Image = kopakaSelectedImageLightBlue;}
+	}
+}
+if (player2Character == 3)
+	{player2Image = randomSelectedImage;}
+
+//Player 3 Selection Images
+if (player3Status == 0)
+	{player3Image = noPlayerImage;}
+if (player3Status != 0 && player3Character == 0)
+	{player3Image = noneSelectedPlayer3Image;}
+if (player3Character == 1) 
+{
+	if (teamOrFFA == 0) 
+	{
+		if (player3Costume == 1)
+			{player3Image = tahuSelectedImageRegular;}
+		if (player3Costume == 2)
+			{player3Image = tahuSelectedImageShadow;}
+		if (player3Costume == 3)
+			{player3Image = tahuSelectedImageInverse;}
+		if (player3Costume == 4)
+			{player3Image = tahuSelectedImageReverse;}
+		if (player3Costume == 5)
+			{player3Image = tahuSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1) //Same annoyances as the one for P2
+	{
+		if (player3Costume == 1 && (player1Character != 1 || player1Costume != 1) && (player2Character != 1 || player2Costume != 1))
+			{player3Image = tahuSelectedImageRed;}
+		if (player3Costume == 1 && ((player1Character == 1 && player1Costume == 1) || (player2Character == 1 && player2Costume == 1)))
+			{player3Image = tahuSelectedImageLightRed;}
+		if (player3Costume == 1 && ((player1Character == 1 && player1Costume == 1) && (player2Character == 1 && player2Costume == 1)))
+			{player3Image = tahuSelectedImageDarkRed;}
+		if (player3Costume == 2 && ( player1Character != 1 || player1Costume != 2) && (player2Character != 1 || player2Costume != 2))
+			{player3Image = tahuSelectedImageGreen;}
+		if (player3Costume == 2 && ((player1Character == 1 && player1Costume == 2) || (player2Character == 1 && player2Costume == 2)))
+			{player3Image = tahuSelectedImageLightGreen;}
+		if (player3Costume == 2 && ((player1Character == 1 && player1Costume == 2) && (player2Character == 1 && player2Costume == 2)))
+			{player3Image = tahuSelectedImageDarkGreen;}
+		if (player3Costume == 3 && (player1Character!= 1 || player1Costume != 3) && (player2Character != 1 || player2Costume != 3))
+			{player3Image = tahuSelectedImageBlue;}
+		if (player3Costume == 3 && ((player1Character == 1 && player1Costume == 3) || (player2Character == 1 && player2Costume == 3)))
+			{player3Image = tahuSelectedImageLightBlue;}
+		if (player3Costume == 3 && ((player1Character == 1 && player1Costume == 3) && (player2Character == 1 && player2Costume == 3)))
+			{player3Image = tahuSelectedImageDarkBlue;}
+	}
+}
+if (player3Character == 2)
+{
+	if (teamOrFFA == 0) 
+	{
+		if (player3Costume == 1)
+			{player3Image = kopakaSelectedImageRegular;}
+		if (player3Costume == 2)
+			{player3Image = kopakaSelectedImageShadow;}
+		if (player3Costume == 3)
+			{player3Image = kopakaSelectedImageInverse;}
+		if (player3Costume == 4)
+			{player3Image = kopakaSelectedImageReverse;}
+		if (player3Costume == 5)
+			{player3Image = kopakaSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1)
+	{
+		if (player3Costume == 1 && (player1Character != 2 || player1Costume != 1) && (player2Character != 2 || player2Costume != 1))
+			{player3Image = kopakaSelectedImageRed;}
+		if (player3Costume == 1 && ((player1Character == 2 && player1Costume == 1) || (player2Character == 2 && player2Costume == 1)))
+			{player3Image = kopakaSelectedImageLightRed;}
+		if (player3Costume == 1 && ((player1Character == 2 && player1Costume == 1) && (player2Character == 2 && player2Costume == 1)))
+			{player3Image = kopakaSelectedImageDarkRed;}
+		if (player3Costume == 2 && (player1Character != 2 || player1Costume != 2) && (player2Character != 2 || player2Costume != 2))
+			{player3Image = kopakaSelectedImageGreen;}
+		if (player3Costume == 2 && ((player1Character == 2 && player1Costume == 2) || (player2Character == 2 && player2Costume == 2)))
+			{player3Image = kopakaSelectedImageLightGreen;}
+		if (player3Costume == 2 && ((player1Character == 2 && player1Costume == 2) && (player2Character == 2 && player2Costume == 2)))
+			{player3Image = kopakaSelectedImageDarkGreen;}
+		if (player3Costume == 3 && (player1Character != 2 || player1Costume != 3) && (player2Character != 2 || player2Costume != 3))
+			{player3Image = kopakaSelectedImageBlue;}
+		if (player3Costume == 3 && ((player1Character == 2 && player1Costume == 3) || (player2Character == 2 && player2Costume == 3)))
+			{player3Image = kopakaSelectedImageLightBlue;}
+		if (player3Costume == 3 && ((player1Character == 2 && player1Costume == 3) && (player2Character == 2 && player2Costume == 3)))
+			{player3Image = kopakaSelectedImageDarkBlue;}
+	}
+}
+if (player3Character == 3)
+	{player3Image = randomSelectedImage;}
+	
+//Player 4 Selection Images
+if (player4Status == 0)
+	{player4Image = noPlayerImage;}
+if (player4Status != 0 && player4Character == 0)
+	{player4Image = noneSelectedPlayer4Image;}
+if (player4Character == 1) 
+{
+	if (teamOrFFA == 0)
+	{
+		if (player4Costume == 1)
+			{player4Image = tahuSelectedImageRegular;}
+		if (player4Costume == 2)
+			{player4Image = tahuSelectedImageShadow;}
+		if (player4Costume == 3)
+			{player4Image = tahuSelectedImageInverse;}
+		if (player4Costume == 4)
+			{player4Image = tahuSelectedImageReverse;}
+		if (player4Costume == 5)
+			{player4Image = tahuSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1) //This section is even more annoying to me than the other two.
+	{
+		if (player4Costume == 1 && (player1Character != 1 || player1Costume != 1) && (player2Character != 1 || player2Costume != 1) && (player2Character != 1 || player2Costume != 1))
+			{player4Image = tahuSelectedImageRed;}
+		if (player4Costume == 1 && ((player1Character == 1 && player1Costume == 1) || (player2Character == 1 && player2Costume == 1) || (player3Character == 1 && player3Costume == 1)))
+			{player4Image = tahuSelectedImageLightRed;}
+		if (player4Costume == 1 && (((player1Character == 1 && player1Costume == 1) && (player2Character == 1 && player2Costume == 1)) || ((player2Character == 1 && player2Costume == 1) && (player3Character == 1 && player3Costume == 1)) || ((player1Character == 1 && player1Costume == 1) && (player3Character == 1 && player3Costume == 1))))
+			{player4Image = tahuSelectedImageDarkRed;}
+		if (player4Costume == 1 && (player1Character == 1 && player1Costume == 1) && (player2Character == 1 && player2Costume == 1) && (player3Character == 1 && player3Costume == 1))
+			{player4Costume = 2;} //Does not allow the player to try to be red if all others are already.
+		if (player4Costume == 2 && (player1Character != 1 || player1Costume != 2) && (player2Character != 1 || player2Costume != 2) && (player2Character != 1 || player2Costume != 2))
+			{player4Image = tahuSelectedImageGreen;}
+		if (player4Costume == 2 && ((player1Character == 1 && player1Costume == 2) || (player2Character == 1 && player2Costume == 2) || (player3Character == 1 && player3Costume == 2)))
+			{player4Image = tahuSelectedImageLightGreen;}
+		if (player4Costume == 2 && (((player1Character == 1 && player1Costume == 2) && (player2Character == 1 && player2Costume == 2)) || ((player2Character == 1 && player2Costume == 2) && (player3Character == 1 && player3Costume == 2)) || ((player1Character == 1 && player1Costume == 2) && (player3Character == 1 && player3Costume == 2))))
+			{player4Image = tahuSelectedImageDarkGreen;}
+		if (player4Costume == 2 && (player1Character == 1 && player1Costume == 2) && (player2Character == 1 && player2Costume == 2) && (player3Character == 1 && player3Costume == 2))
+			{player4Costume = 3;} //Does not allow the player to try to be green if all other are already.
+		if (player4Costume == 3 && (player1Character != 1 || player1Costume != 3) && (player2Character != 1 || player2Costume != 3) && (player2Character != 1 || player2Costume != 3))
+			{player4Image = tahuSelectedImageBlue;}
+		if (player4Costume == 3 && ((player1Character == 1 && player1Costume == 3) || (player2Character == 1 && player2Costume == 3) || (player3Character == 1 && player3Costume == 3)))
+			{player4Image = tahuSelectedImageLightBlue;}
+		if (player4Costume == 3 && (((player1Character == 1 && player1Costume == 3) && (player2Character == 1 && player2Costume == 3)) || ((player2Character == 1 && player2Costume == 3) && (player3Character == 1 && player3Costume == 3)) || ((player1Character == 1 && player1Costume == 3) && (player3Character == 1 && player3Costume == 3))))
+			{player4Image = tahuSelectedImageDarkBlue;}
+		if (player4Costume == 3 && (player1Character == 1 && player1Costume == 3) && (player2Character == 1 && player2Costume == 3) && (player3Character == 1 && player3Costume == 3))
+			{player4Costume = 1;} //Does not allow the player to try to be blue if all others are already.
+	}
+}
+if (player4Character == 2)
+{
+	if (teamOrFFA == 0) 
+	{
+		if (player4Costume == 1)
+			{player4Image = kopakaSelectedImageRegular;}
+		if (player4Costume == 2)
+			{player4Image = kopakaSelectedImageShadow;}
+		if (player4Costume == 3)
+			{player4Image = kopakaSelectedImageInverse;}
+		if (player4Costume == 4)
+			{player4Image = kopakaSelectedImageReverse;}
+		if (player4Costume == 5)
+			{player4Image = kopakaSelectedImageGoldenMask;}
+	}
+	if (teamOrFFA == 1)
+	{
+		if (player4Costume == 1 && (player1Character != 2 || player1Costume != 1) && (player2Character != 2 || player2Costume != 1) && (player2Character != 2 || player2Costume != 1))
+			{player4Image = kopakaSelectedImageRed;}
+		if (player4Costume == 1 && ((player1Character == 2 && player1Costume == 1) || (player2Character == 2 && player2Costume == 1) || (player3Character == 2 && player3Costume == 1)))
+			{player4Image = kopakaSelectedImageLightRed;}
+		if (player4Costume == 1 && (((player1Character == 2 && player1Costume == 1) && (player2Character == 2 && player2Costume == 1)) || ((player2Character == 2 && player2Costume == 1) && (player3Character == 2 && player3Costume == 1)) || ((player1Character == 2 && player1Costume == 1) && (player3Character == 2 && player3Costume == 1))))
+			{player4Image = kopakaSelectedImageDarkRed;}
+		if (player4Costume == 1 && (player1Character == 2 && player1Costume == 1) && (player2Character == 2 && player2Costume == 1) && (player3Character == 2 && player3Costume == 1))
+			{player4Costume = 2;} //Same function as above for Kopaka
+		if (player4Costume == 2 && (player1Character != 2 || player1Costume != 2) && (player2Character != 2 || player2Costume != 2) && (player2Character != 2 || player2Costume != 2))
+			{player4Image = kopakaSelectedImageGreen;}
+		if (player4Costume == 2 && ((player1Character == 2 && player1Costume == 2) || (player2Character == 2 && player2Costume == 2) || (player3Character == 2 && player3Costume == 2)))
+			{player4Image = kopakaSelectedImageLightGreen;}
+		if (player4Costume == 2 && (((player1Character == 2 && player1Costume == 2) && (player2Character == 2 && player2Costume == 2)) || ((player2Character == 2 && player2Costume == 2) && (player3Character == 2 && player3Costume == 2)) || ((player1Character == 2 && player1Costume == 2) && (player3Character == 2 && player3Costume == 2))))
+			{player4Image = kopakaSelectedImageDarkGreen;}
+		if (player4Costume == 2 && (player1Character == 2 && player1Costume == 2) && (player2Character == 2 && player2Costume == 2) && (player3Character == 2 && player3Costume == 2))
+			{player4Costume = 3;} //Same function as above for Kopaka
+		if (player4Costume == 3 && (player1Character != 2 || player1Costume != 3) && (player2Character != 2 || player2Costume != 3) && (player2Character != 2 || player2Costume != 3))
+			{player4Image = kopakaSelectedImageBlue;}
+		if (player4Costume == 3 && ((player1Character == 2 && player1Costume == 3) || (player2Character == 2 && player2Costume == 3) || (player3Character == 2 && player3Costume == 3)))
+			{player4Image = kopakaSelectedImageLightBlue;}
+		if (player4Costume == 3 && (((player1Character == 2 && player1Costume == 3) && (player2Character == 2 && player2Costume == 3)) || ((player2Character == 2 && player2Costume == 2) && (player3Character == 2 && player3Costume == 3)) || ((player1Character == 2 && player1Costume == 3) && (player3Character == 2 && player3Costume == 3))))
+			{player4Image = kopakaSelectedImageDarkBlue;}
+		if (player4Costume == 3 && (player1Character == 2 && player1Costume == 3) && (player2Character == 2 && player2Costume == 3) && (player3Character == 2 && player3Costume == 3))
+			{player4Costume = 1;} //Same function as above for Kopaka
+	}
+}
+if (player4Character == 3)
+	{player4Image = randomSelectedImage;}
+
+
+//Player Selection Images (Training)
+if (trainingPlayerCharacter == 0)
+	{trainingPlayerImage = noneSelectedTrainingPlayerImage;}
+if (trainingPlayerCharacter == 1)
+	{trainingPlayerImage = tahuSelectedImageRegular;}
+if (trainingPlayerCharacter == 2)
+	{trainingPlayerImage = kopakaSelectedImageRegular;}
+if (trainingPlayerCharacter == 3)
+	{trainingPlayerImage = randomSelectedImage;}
+	
+if (trainingComputerCharacter == 0)
+	{trainingComputerImage = noneSelectedTrainingComputerImage;}
+if (trainingComputerCharacter == 1)
+	{trainingComputerImage = tahuSelectedImageRegular;}
+if (trainingComputerCharacter == 2)
+	{trainingComputerImage = kopakaSelectedImageRegular;}
+if (trainingComputerCharacter == 3)
+	{trainingComputerImage = randomSelectedImage;}
+
+
+//Team Costume Adjustments
+if (teamOrFFA == 1)
+{
+	if (player1Costume == 1 && player1Character != 0)
+		{redTeamP1 = 1;}
+	if (player1Costume != 1 || player1Character == 0)
+		{redTeamP1 = 0;}
+	if (player1Costume == 2 && player1Character != 0)
+		{greenTeamP1 = 1;}
+	if (player1Costume != 2 || player1Character == 0)
+		{greenTeamP1 = 0;}
+	if (player1Costume == 3 && player1Character != 0)
+		{blueTeamP1 = 1;}
+	if (player1Costume != 3 || player1Character == 0)
+		{blueTeamP1 = 0;}
+	if (player2Costume == 1 && player2Character != 0)
+		{redTeamP2 = 1;}
+	if (player2Costume != 1 || player2Character == 0)
+		{redTeamP2 = 0;}
+	if (player2Costume == 2 && player2Character != 0)
+		{greenTeamP2 = 1;}
+	if (player2Costume != 2 || player2Character == 0)
+		{greenTeamP2 = 0;}
+	if (player2Costume == 3 && player2Character != 0)
+		{blueTeamP2 = 1;}
+	if (player2Costume != 3 || player2Character == 0)
+		{blueTeamP2 = 0;}
+	if (player3Costume == 1 && player3Character != 0)
+		{redTeamP3 = 1;}
+	if (player3Costume != 1 || player3Character == 0)
+		{redTeamP3 = 0;}
+	if (player3Costume == 2 && player3Character != 0)
+		{greenTeamP3 = 1;}
+	if (player3Costume != 2 || player3Character == 0)
+		{greenTeamP3 = 0;}
+	if (player3Costume == 3 && player3Character != 0)
+		{blueTeamP3 = 1;}
+	if (player3Costume != 3 || player3Character == 0)
+		{blueTeamP3 = 0;}
+	if (player4Costume == 1 && player4Character != 0)
+		{redTeamP4 = 1;}
+	if (player4Costume != 1 || player4Character == 0)
+		{redTeamP4 = 0;}
+	if (player4Costume == 2 && player4Character != 0)
+		{greenTeamP4 = 1;}
+	if (player4Costume != 2 || player4Character == 0)
+		{greenTeamP4 = 0;}
+	if (player4Costume == 3 && player4Character != 0)
+		{blueTeamP4 = 1;}
+	if (player4Costume != 3 || player4Character == 0)
+		{blueTeamP4 = 0;}
+}
+
+//Number of Players on a Team
+redTeamAmount = redTeamP1 + redTeamP2 + redTeamP3 + redTeamP4;
+greenTeamAmount = greenTeamP1 + greenTeamP2 + greenTeamP3 + greenTeamP4;
+blueTeamAmount = blueTeamP1 + blueTeamP2 + blueTeamP3 + blueTeamP4;
+
+if (redTeamAmount > 0)
+	{redTeamViable = 1;}
+if (redTeamAmount == 0)
+	{redTeamViable = 0;}
+if (greenTeamAmount > 0)
+	{greenTeamViable = 1;}
+if (greenTeamAmount == 0)
+	{greenTeamViable = 0;}
+if (blueTeamAmount > 0)
+	{blueTeamViable = 1;}
+if (blueTeamAmount == 0)
+	{blueTeamViable = 0;}
+
+numberOfTeams = redTeamViable + greenTeamViable + blueTeamViable;
 
 }
 
@@ -846,12 +1648,16 @@ if (player4Character == 0)
 
 -Allow Switch between Characters
 -Allow Switch between player type (1=Human, 2=CPU, 0=None)
--Create Button that appears when enough players/teams exist
+-Create Button that appears when enough players/teams exist [ESPECIALLY TEAMS]
 -Allow Switch between Characters in Training Menu
 -Allow Switch between Costumes in Training Menu
 -Attach Training Menu to Training Mode
 -Attach Select Menu to Main Game
 -Set warning box to appear if (stockAmount == 0 && timeTotal == 0 && widgetAmount == 0), rather than play box
+
+-Allow change between costume images
+
+-SET UP WAY SO COSTUME SHADE WILL CHANGE BASED ON WHEN THE TEAM WAS JOINED {This can be done for the next release. Current is based on which player it is.}
 
 -More
 

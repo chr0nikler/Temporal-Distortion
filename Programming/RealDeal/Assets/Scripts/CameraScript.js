@@ -25,18 +25,18 @@ function Start(){
 
 function OnGUI(){
 
-    GUILayout.Label("largest distance is = " + largestDistance.ToString());  //Testing Camera data 
+  /*GUILayout.Label("largest distance is = " + largestDistance.ToString());  //Testing Camera data 
     GUILayout.Label("height = " + height.ToString());						 //(distance to target point between all players)
     GUILayout.Label("number of players = " + targets.length.ToString());
     for(n = 0; n < targets.length; n++)
     {
     	GUILayout.Label(targets[n].name);
-    }
+    }*/
 
 }
 
 
-function LateUpdate () //Camera Follow actiosn
+function LateUpdate () //Camera Follow actions 	
 {
 	
     targets = GameObject.FindGameObjectsWithTag("Player"); 

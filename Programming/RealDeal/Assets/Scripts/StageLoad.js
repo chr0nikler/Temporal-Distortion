@@ -3,15 +3,18 @@ var stage : GameObject;
 
 
 
+
 function Awake()
-{
-	stage = Instantiate(Resources.Load("showdown_platform_demo 1"), this.transform.position, this.transform.rotation);
+{	
+	//simply instantiating the sample stage
+	stage = Instantiate(Resources.Load("showdown_platform_demo 1"), this.transform.position, this.transform.rotation); 
 	stage.transform.localScale += Vector3(60,34,34);
 	stage.transform.parent = this.transform;
 	
 }
 
 function Start () {
+	
 	
 }
 
