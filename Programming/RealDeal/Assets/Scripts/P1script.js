@@ -174,14 +174,24 @@ function Keyupdate()
 		animation.CrossFadeQueued("jump", 0.3, QueueMode.PlayNow);
 		} else if (Input.GetAxis("P1Horizontal") != 0) {
 			moveDirection.y = 0;
-			if(!animation.IsPlaying("sprint"))
+			if(dashing == 0)
 			{
-				animation.CrossFadeQueued("sprint", 0.3, QueueMode.PlayNow);
+				if(!animation.IsPlaying("walk"))
+				{
+					animation.CrossFadeQueued("walk", 0.3, QueueMode.PlayNow);
+				}
+			}
+			else
+			{
+				if(!animation.IsPlaying("sprint"))
+				{
+					animation.CrossFadeQueued("sprint", 0.3, QueueMode.PlayNow);
+				}
 			}
 		} else if (Input.GetAxis("P1Horizontal") == 0) {
 			animation.CrossFadeQueued("idle", 0.3, QueueMode.CompleteOthers);
 		}
-		if(Input.GetAxis("P1Horizontal") == 0 && animation.IsPlaying("sprint"))
+		if(Input.GetAxis("P1Horizontal") == 0 && (animation.IsPlaying("sprint") || animation.IsPlaying("walk")))
 		{
 			animation.CrossFadeQueued("idle", 0.3, QueueMode.PlayNow);
 		}
