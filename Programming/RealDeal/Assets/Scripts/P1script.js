@@ -19,6 +19,7 @@ private var flags:CollisionFlags;
 static var jumpstate:int=0;
 static var upcheck:int=0;
 var upwait:int=0;
+var upAttack:int=0;
 var downcheck:int=0;
 var keywait:int=0;
 var lastxkey:String="Null";
@@ -143,20 +144,21 @@ function Keyupdate()
 		}
 	}
 	if(grounded){
-		if(animation.IsPlaying("idle"))
+		if(animation.IsPlaying("idle") || animation.IsPlaying("slash1") || animation.IsPlaying("slash2"))
 		{
-			if (Input.GetKeyDown(ControlSetup.attackButton) && upcheck ==  1 && grounded)
+			if (Input.GetKeyDown(ControlSetup.attackButton) && upAttack)
 			{
 				animation.CrossFadeQueued("up_tilt",0.3,QueueMode.PlayNow);
 				Debug.Log("Up Tilt");
 			}
-			else if(Input.GetKeyDown(ControlSetup.attackButton) && downcheck ==  1 && grounded)
+			else if(Input.GetKeyDown(ControlSetup.attackButton) && downcheck ==  1)
 			{
 				animation.CrossFadeQueued("down_tilt",0.3,QueueMode.PlayNow);
 				Debug.Log("Down Tilt");
 			}
-			else if(Input.GetKeyDown(ControlSetup.attackButton) && (lastxkey ==  "Right" || lastxkey == "Left") && keywait == 1 && grounded)
+			else if(Input.GetKeyDown(ControlSetup.attackButton) && (lastxkey ==  "Right" || lastxkey == "Left") && keywait == 1)
 			{
+				animation.CrossFadeQueued("side_tilt", 0.3, QueueMode.PlayNow);
 				Debug.Log("Side Tilt");
 			}
 			else if(Input.GetKeyDown(ControlSetup.attackButton))
@@ -178,6 +180,10 @@ function Keyupdate()
 			}
 		} else if (Input.GetAxis("P1Horizontal") == 0) {
 			animation.CrossFadeQueued("idle", 0.3, QueueMode.CompleteOthers);
+		}
+		if(Input.GetAxis("P1Horizontal") == 0 && animation.IsPlaying("sprint"))
+		{
+			animation.CrossFadeQueued("idle", 0.3, QueueMode.PlayNow);
 		}
 	}
 	
@@ -312,6 +318,13 @@ function Keyupdate()
 	} else {
 		upcheck = 0;
 		upwait++;
+	}
+	
+	if(Input.GetKey(ControlSetup.upButton))
+	{
+		upAttack = 1;
+	} else {
+		upAttack = 0;
 	}
 	
 	if (Input.GetAxis("P1Horizontal") > 0 && !Input.GetKeyDown(ControlSetup.attackButton))

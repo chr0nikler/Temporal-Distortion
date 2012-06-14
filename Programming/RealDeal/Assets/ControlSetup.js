@@ -88,12 +88,12 @@ var shieldButtonName : String = "[";
 shieldButtonName = PlayerPrefs.GetString("Shield Name");
 var defaultShieldButtonName : String = "[";
 //---------------
-static var jumpButton : KeyCode = KeyCode.W;
+static var jumpButton : KeyCode = KeyCode.Q;
 jumpButton = PlayerPrefs.GetInt("Jump", parseInt(jumpButton));
-var defaultJumpButton : KeyCode = KeyCode.W;
-var jumpButtonName : String = "W";
+var defaultJumpButton : KeyCode = KeyCode.Q;
+var jumpButtonName : String = "Q";
 jumpButtonName = PlayerPrefs.GetString("Jump Name");
-var defaultJumpButtonName : String = "W";
+var defaultJumpButtonName : String = "Q";
 //---------------
 static var taunt1Button : KeyCode = KeyCode.Alpha1;
 taunt1Button = PlayerPrefs.GetInt("Taunt 1", parseInt(taunt1Button));
@@ -194,12 +194,12 @@ var shieldButtonP2Name : String = "Keypad +";
 shieldButtonP2Name = PlayerPrefs.GetString("Shield P2 Name");
 var defaultShieldButtonP2Name : String = "Keypad +";
 //---------------
-static var jumpButtonP2 : KeyCode = KeyCode.UpArrow;
+static var jumpButtonP2 : KeyCode = KeyCode.RightControl;
 jumpButtonP2 = PlayerPrefs.GetInt("Jump P2", parseInt(jumpButtonP2));
-var defaultJumpButtonP2 : KeyCode = KeyCode.UpArrow;
-var jumpButtonP2Name : String = "Up Arrow";
+var defaultJumpButtonP2 : KeyCode = KeyCode.RightControl;
+var jumpButtonP2Name : String = "Right Control";
 jumpButtonP2Name = PlayerPrefs.GetString("Jump P2 Name");
-var defaultJumpButtonP2Name : String = "Up Arrow";
+var defaultJumpButtonP2Name : String = "Right Control";
 //---------------
 static var taunt1ButtonP2 : KeyCode = KeyCode.Keypad7;
 taunt1ButtonP2 = PlayerPrefs.GetInt("Taunt 1 P2", parseInt(taunt1ButtonP2));
