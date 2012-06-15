@@ -47,7 +47,7 @@ function Start() {
 	clone.GetComponent(CharacterController).radius = 0.07;
 	clone.GetComponent(CharacterController).height = 0.2205;
 	clone.GetComponent(CharacterController).center.y = 0.1;
-	clone.animation.playAutomatically = false;
+	clone.animation.playAutomatically = true;
 	clone.AddComponent("P1script");
 	if(characterNumber == 1)
 	{
