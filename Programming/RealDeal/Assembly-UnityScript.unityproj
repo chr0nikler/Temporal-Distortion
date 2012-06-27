@@ -46,19 +46,22 @@
   <ItemGroup>
      <Compile Include="Assets\Achievements.js" />
      <Compile Include="Assets\ControlSetup.js" />
-     <Compile Include="Assets\DemoMenu.js" />
      <Compile Include="Assets\Menu Stuff\SelectChar.js" />
      <Compile Include="Assets\Menu Stuff\SelectCharacter.js" />
      <Compile Include="Assets\Menu Stuff\menu.js" />
      <Compile Include="Assets\Menu Stuff\menu2.js" />
      <Compile Include="Assets\Scripts\CameraScript.js" />
      <Compile Include="Assets\Scripts\Characters.js" />
+     <Compile Include="Assets\Scripts\CountdownTimer.js" />
      <Compile Include="Assets\Scripts\DeathTrigger.js" />
+     <Compile Include="Assets\Scripts\DemoMenu.js" />
      <Compile Include="Assets\Scripts\Gui_StatDisplay.js" />
      <Compile Include="Assets\Scripts\LevelAttributes.js" />
      <Compile Include="Assets\Scripts\P1script (Mr. Potato Mask&apos;s conflicted copy 2012-06-06).js" />
      <Compile Include="Assets\Scripts\P1script.js" />
+     <Compile Include="Assets\Scripts\P1spot.js" />
      <Compile Include="Assets\Scripts\P2script.js" />
+     <Compile Include="Assets\Scripts\P2spot.js" />
      <Compile Include="Assets\Scripts\P3script.js" />
      <Compile Include="Assets\Scripts\P4script.js" />
      <Compile Include="Assets\Scripts\Player1Create.js" />
@@ -69,8 +72,9 @@
      <Compile Include="Assets\Scripts\Shield.js" />
      <Compile Include="Assets\Scripts\StageLoad.js" />
      <Compile Include="Assets\Scripts\TestMoves.js" />
+     <Compile Include="Assets\Scripts\WinnerScreen.js" />
+     <Compile Include="Assets\Scripts\tahuScript.js" />
      <Compile Include="Assets\TempObjects\NewBehaviourScript.js" />
-     <Compile Include="Assets\WinnerScreen.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,8 @@
-var NewModel : GameObject;
+static var NewModel : GameObject;
 static var characterNumber : int = SelectCharacter.player1Character;
 static var clone : GameObject;
+static var model : GameObject;
+static var character : String;
 
 
 function Awake()
@@ -40,15 +42,41 @@ function Start() {
 
 	
 	clone = Instantiate(NewModel, transform.position, transform.rotation);
+	costumeChange();
 	clone.transform.localScale += Vector3(10,10,10);
 	clone.tag = "Player";
+	clone.animation.playAutomatically = false;
+	character = addCharacterScript(NewModel);
 	
-	clone.AddComponent(CharacterController);
-	clone.GetComponent(CharacterController).radius = 0.07;
-	clone.GetComponent(CharacterController).height = 0.2205;
-	clone.GetComponent(CharacterController).center.y = 0.1;
-	clone.animation.playAutomatically = true;
-	clone.AddComponent("P1script");
+	
+	
+}
+
+function addCharacterScript (g : GameObject) : String
+{
+	if(g == Characters.Tahu)
+	{
+		clone.AddComponent("tahuScript");
+		clone.AddComponent(CharacterController);
+		clone.GetComponent(CharacterController).radius = 0.07;
+		clone.GetComponent(CharacterController).height = 0.2205;
+		clone.GetComponent(CharacterController).center.y = 0.1;
+		return("tahu");
+		
+	}
+	else if (g == Characters.Kopaka)
+	{
+		//AddComponent("tahuScript");
+		clone.AddComponent(CharacterController);
+		clone.GetComponent(CharacterController).radius = 0.07;
+		clone.GetComponent(CharacterController).height = 0.2205;
+		clone.GetComponent(CharacterController).center.y = 0.1;
+		return("kopaka");
+	}
+}
+
+public static function costumeChange()
+{
 	if(characterNumber == 1)
 	{
 		if(SelectCharacter.player1Costume == 2)
@@ -97,7 +125,5 @@ function Start() {
 			clone.Find("Mesh_006").GetComponent("SkinnedMeshRenderer").material.mainTexture = Characters.KTG;
 		}
 	}
-	
 }
-
 

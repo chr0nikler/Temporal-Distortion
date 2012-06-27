@@ -1,0 +1,53 @@
+1. Player control graphics need to be put in
+2. Training--costume change is not set up yet
+3. Training--name change is not setup yet.
+4. Training--max combo not setup yet.
+5. Training--total combo not setup yet.
+6. Training--Click to start does nothing.
+7. Essentially, training is useless.
+8. FIGHT--name change not setup yet.
+9. FIGHT--all rules except for stock do now work.
+10.FIGHT--p2,P3,P4 costume change is not applied yet in game
+11.FIGHT--NO CPU for fighting.
+12.demo1stagetestv2--p3,p4 stats do not work for random, DO WORK FOR ACTUAL CHARACTER
+13.demo1stagetestv2--p3,p4 no spawn.
+14.demo1stagetestv2--percentage does not work
+15.demo1stagetestv2--rip needs to be farther back
+16.demo1stagetestv2--tahu single jump doesn't use falling animation
+17.demo1stagetestv2--side tilt needs implementation
+18.demo1stagetestv2--random double jump instead of single after grounded
+19.demo1stagetestv2--no hitboxes
+20.demo1stagetestv2--stage scale slightly off (character can walk off).
+21.demo1stagetestv2--no p2 script even in use.
+22.demo1stagetestv2--doesn't switch to winners scene with p3/p4
+23.demo1stagetestv2--GAME OVER flashes instead of solid till scene switch
+24.WinnerScene--most characteristics are not implemented
+25.WinnerScene--players not activated still have GUI's showing.
+26.WinnerScene--no clapping/winner animation
+27.REPLAY--utter failure:
+	fails to change characters/costumes/players
+	says GAME OVER, then 1, then immediately to WinnerScene
+	tieme stays the same
+
+ERRORS THAT POP UP
+
+NullReferenceException
+P1script.Main () (at C:/Users/User/Dropbox/BSD/Programming/RealDeal/Assets/Scripts/P1script.js:4)
+FROM: injured animation that is nonexistent currently.
+
+NullReferenceException
+P2script.Main () (at C:/Users/User/Dropbox/BSD/Programming/RealDeal/Assets/Scripts/P2script.js:2)
+FROM: reference above
+
+UnityException: Input Axis P2Horizontal is not setup.
+ To change the input settings use: Edit -> Project Settings -> Input
+P2script.Keyupdate () (at C:/Users/User/Dropbox/BSD/Programming/RealDeal/Assets/Scripts/P2script.js:123)
+P2script.Update () (at C:/Users/User/Dropbox/BSD/Programming/RealDeal/Assets/Scripts/P2script.js:95)
+FROM: P2script, input axis needs to be setup from settings
+
+after replay, same ones repeat.
+
+NOTICE: must change p1 script to reference characters script. Easier for each character with special moves
+
+
+Hey, at least the errors are few and far between right now :)

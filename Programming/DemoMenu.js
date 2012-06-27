@@ -10,6 +10,7 @@ static var menu : int = 0;
 var leftMouseCheck : int = 0;
 static var musicVolume : float = 1;
 static var soundVolume : float = 1;
+var click: AudioClip;
 
 function OnGUI () {
 	
@@ -19,11 +20,13 @@ if (menu == 0)
 	(GUI.Label (Rect(0,0,Screen.width,Screen.height),pressStart));	
 	if (Input.GetButtonDown("Fire1"))
 		{
+            audio.PlayOneShot(click);
 			menu = 1;
 		}
 	if (Input.GetKeyDown(KeyCode.Return))
 		{
 			menu = 1;
+            audio.PlayOneShot(click);
 		}
 	}
 	

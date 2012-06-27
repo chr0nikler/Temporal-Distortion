@@ -32,7 +32,7 @@ achieve.Add(0); //Achievements.achieve[20] "Appreciative Player" - Take a look a
 achieveComplete = achieveComplete + achieve[achieveProgress];
 achievePercent = (achieveComplete/20.0f);
 
-if (DemoMenu.extrasMenu == 1)
+if (DemoMenu.menu == 5)
 	{
 	if (achieveProgress < 21)
 		{
@@ -40,7 +40,7 @@ if (DemoMenu.extrasMenu == 1)
 		}
 	}
 
-if (DemoMenu.extrasMenu != 1)
+if (DemoMenu.menu != 5 && DemoMenu.menu != 6)
 	{
 	achieveProgress = 0;
 	achieveComplete = 0;

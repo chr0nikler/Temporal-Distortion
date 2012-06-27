@@ -8,8 +8,10 @@ function Awake()
 {	
 	//simply instantiating the sample stage
 	stage = Instantiate(Resources.Load("showdown_platform_demo 1"), this.transform.position, this.transform.rotation); 
-	stage.transform.localScale += Vector3(60,34,34);
+	stage.transform.localScale += Vector3(78,60,78);
 	stage.transform.parent = this.transform;
+	stage.AddComponent(MeshCollider);
+	stage.GetComponent(MeshCollider).sharedMesh = Resources.Load("Cube");
 	
 }
 

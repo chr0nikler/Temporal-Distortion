@@ -10,6 +10,10 @@ var arrowLeft : Texture2D;
 var arrowRight : Texture2D;
 var trainingTitleImage : Texture2D;
 static var stockAmount : int = 5;
+static var nameordiff1 : String = "Player 1";
+static var nameordiff2 : String = "Player 2";
+static var nameordiff3 : String = "Player 3";
+static var nameordiff4 : String = "Player 4";
 var timeMinutes : int = 0;
 var timeSecondsTens : int = 0;
 var timeSecondsOnes : int = 0;
@@ -116,6 +120,7 @@ var player2NameOrDifficultyScroll : Vector2;
 var player3NameOrDifficultyScroll : Vector2;
 var player4NameOrDifficultyScroll : Vector2;
 var trainingPlayerNameScroll : Vector2; //Same as above but only for the Training Player's name
+var player1TypeBox : int = 0;
 var player1NameButtonBox : int = 0;
 var player2NameButtonBox : int = 0;
 var player3NameButtonBox : int = 0;
@@ -315,6 +320,11 @@ if(DemoMenu.menu == 7)
 			if (GUI.Button (Rect (Screen.width*.05,Screen.height*.9,Screen.width*.125,Screen.height*.05),player1StatusTitle))
 			{
 				player1Status++;
+				
+			}
+			if(player1Status == 2)
+			{
+				nameordiff1 = "CPU Lv. 1";
 			}
 			if (player1Status == 1 || player1Status == 2)
 			{
@@ -323,34 +333,52 @@ if(DemoMenu.menu == 7)
 					player = 1;
 					costumechange(player);
 				}
-				if (GUI.Button (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+				if(player1Status == 1)
 				{
-					player1NameButtonBox = 1;
+					if (GUI.Button (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Name"))
+					{
+						player1NameButtonBox = 1;
+					}
 				}
+				else if (player1Status == 2)
+				{
+					if (GUI.Button (Rect (Screen.width*.20625,Screen.height*.9,Screen.width*.03125,Screen.height*.05), "Diff"))
+					{
+						player1NameButtonBox = 1;
+					}
+				}	
 			}
 		} //STILL NEED TO ADD ARRAY SO BOTH NAMES AND DIFFICULTIES CAN BE ACCESSED.
 		if (player1NameButtonBox == 1) 
 		{
+			
 			GUILayout.BeginArea (Rect (Screen.width*.05,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
 			GUILayout.BeginVertical ("box");
 			player1NameOrDifficultyScroll = GUILayout.BeginScrollView (player1NameOrDifficultyScroll);
-			for (var player1NameButtons : int = 1; player1NameButtons < 16; player1NameButtons++)
+			if (player1Status == 1)
 			{
-				if (player1Status == 1)
+				if(Event.current.type == EventType.KeyDown && Event.current.character == '\n')
 				{
-					if (GUILayout.Button("Name " + player1NameButtons, GUILayout.Height(Screen.height*.1))) //Here
-					{
-						player1NameButtonBox = 0;
-					}
+					player1NameButtonBox = 0;
 				}
-				if (player1Status == 2)
+				else
+				{
+					nameordiff1 = GUILayout.TextField(nameordiff1, 8,GUILayout.Height(Screen.height*.1)); //Here
+				}
+			}
+			else if (player1Status == 2)
+			{
+				for (var player1NameButtons : int = 1; player1NameButtons < 16; player1NameButtons++)
 				{
 					if (GUILayout.Button("Difficulty " + player1NameButtons, GUILayout.Height(Screen.height*.1))) //Here
 					{
+						nameordiff1 = "CPU Lv." + player1NameButtons.ToString();
 						player1NameButtonBox = 0;
 					}
-				}	
+				}
+					
 			}
+			
 			GUILayout.EndScrollView();
 			GUILayout.EndVertical();
 			GUILayout.EndArea();
@@ -366,6 +394,15 @@ if(DemoMenu.menu == 7)
 			if (GUI.Button (Rect (Screen.width*.2875,Screen.height*.9,Screen.width*.125,Screen.height*.05),player2StatusTitle))
 			{
 				player2Status++;
+				
+			}
+			if(player2Status == 2)
+			{
+				nameordiff2 = "CPU Lv. 1";
+			}
+			else
+			{
+			 	nameordiff2 = "Player 2";
 			}
 			if (player2Status == 1 || player2Status == 2)
 			{
@@ -385,22 +422,28 @@ if(DemoMenu.menu == 7)
 			GUILayout.BeginArea (Rect (Screen.width*.2875,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
 			GUILayout.BeginVertical ("box");
 			player2NameOrDifficultyScroll = GUILayout.BeginScrollView (player2NameOrDifficultyScroll);
-			for (var player2NameButtons : int = 1; player2NameButtons < 16; player2NameButtons++)
+			if (player2Status == 1)
 			{
-				if (player2Status == 1)
+				if(Event.current.type == EventType.KeyDown && Event.current.character == '\n')
 				{
-					if (GUILayout.Button("Name " + player2NameButtons, GUILayout.Height(Screen.height*.1))) //Here
-					{
-						player2NameButtonBox = 0;
-					}
+					player2NameButtonBox = 0;
 				}
-				if (player2Status == 2)
+				else
+				{
+					nameordiff2 = GUILayout.TextField(nameordiff2, 8,GUILayout.Height(Screen.height*.1)); //Here
+				}
+			}
+			else if(player2Status == 2)
+			{
+				
+				for (var player2NameButtons : int = 1; player2NameButtons < 16; player2NameButtons++)
 				{
 					if (GUILayout.Button("Difficulty " + player2NameButtons, GUILayout.Height(Screen.height*.1))) //Here
 					{
+						nameordiff2 = "CPU Lv." + player2NameButtons.ToString();
 						player2NameButtonBox = 0;
-					}
-				}	
+					}	
+				}
 			}
 			GUILayout.EndScrollView();
 			GUILayout.EndVertical();
@@ -418,6 +461,15 @@ if(DemoMenu.menu == 7)
 			if (GUI.Button (Rect (Screen.width*.525,Screen.height*.9,Screen.width*.125,Screen.height*.05),player3StatusTitle))
 			{
 				player3Status++;
+				
+			}
+			if(player3Status == 2)
+			{
+				nameordiff3 = "CPU Lv. 1";
+			}
+			else
+			{
+			 	nameordiff3 = "Player 3";
 			}
 			if (player3Status == 1 || player3Status == 2)
 			{
@@ -437,22 +489,27 @@ if(DemoMenu.menu == 7)
 			GUILayout.BeginArea (Rect (Screen.width*.525,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
 			GUILayout.BeginVertical ("box");
 			player3NameOrDifficultyScroll = GUILayout.BeginScrollView (player3NameOrDifficultyScroll);
-			for (var player3NameButtons : int = 1; player3NameButtons < 16; player3NameButtons++)
+			if (player3Status == 1)
 			{
-				if (player3Status == 1)
+				if(Event.current.type == EventType.KeyDown && Event.current.character == '\n')
 				{
-					if (GUILayout.Button("Name " + player3NameButtons, GUILayout.Height(Screen.height*.1))) //Here
-					{
-						player3NameButtonBox = 0;
-					}
+					player3NameButtonBox = 0;
 				}
-				if (player3Status == 2)
+				else
+				{
+					nameordiff3 = GUILayout.TextField(nameordiff3,8, GUILayout.Height(Screen.height*.1)); //Here
+				}
+			}
+			else if (player3Status == 2)
+			{
+				for (var player3NameButtons : int = 1; player3NameButtons < 16; player3NameButtons++)
 				{
 					if (GUILayout.Button("Difficulty " + player3NameButtons, GUILayout.Height(Screen.height*.1))) //Here
 					{
+						nameordiff3 = "CPU Lv." + player3NameButtons.ToString();
 						player3NameButtonBox = 0;
-					}
-				}	
+					}	
+				}
 			}
 			GUILayout.EndScrollView();
 			GUILayout.EndVertical();
@@ -470,6 +527,15 @@ if(DemoMenu.menu == 7)
 			if (GUI.Button (Rect (Screen.width*.7625,Screen.height*.9,Screen.width*.125,Screen.height*.05),player4StatusTitle))
 			{
 				player4Status++;
+				
+			}
+			if(player4Status == 2)
+			{
+				nameordiff4 = "CPU Lv. 1";
+			}
+			else
+			{
+			 	nameordiff4 = "Player 4";
 			}
 			if (player4Status == 1 || player4Status == 2)
 			{
@@ -489,23 +555,29 @@ if(DemoMenu.menu == 7)
 			GUILayout.BeginArea (Rect (Screen.width*.7625,Screen.height*.55,Screen.width*.1875,Screen.height*.4));
 			GUILayout.BeginVertical ("box");
 			player4NameOrDifficultyScroll = GUILayout.BeginScrollView (player4NameOrDifficultyScroll);
-			for (var player4NameButtons : int = 1; player4NameButtons < 16; player4NameButtons++)
+			if (player4Status == 1)
 			{
-				if (player4Status == 1)
+				if(Event.current.type == EventType.KeyDown && Event.current.character == '\n')
 				{
-					if (GUILayout.Button("Name " + player4NameButtons, GUILayout.Height(Screen.height*.1))) //Here
-					{
-						player4NameButtonBox = 0;
-					}
+					player4NameButtonBox = 0;
 				}
-				if (player4Status == 2)
+				else
 				{
+					nameordiff4 = GUILayout.TextField(nameordiff4, 8, GUILayout.Height(Screen.height*.1)); //Here
+				}
+			}
+			else if (player4Status == 2)
+			{
+				for (var player4NameButtons : int = 1; player4NameButtons < 16; player4NameButtons++)
+				{
+					
 					if (GUILayout.Button("Difficulty " + player4NameButtons, GUILayout.Height(Screen.height*.1))) //Here
 					{
+						nameordiff4 = "CPU Lv." + player4NameButtons.ToString();
 						player4NameButtonBox = 0;
-					}
-				}	
-			}
+					}	
+				}
+			}				
 			GUILayout.EndScrollView();
 			GUILayout.EndVertical();
 			GUILayout.EndArea(); 
@@ -586,7 +658,7 @@ if(DemoMenu.menu == 7)
 				if (GUI.Button (Rect (Screen.width*.05,Screen.height*.5,Screen.width*.9,Screen.height*.05), "Click to Start!"))
 				{
 					print ("The game has started!");
-					Application.LoadLevel("demo1stagetest"); //
+					Application.LoadLevel("demo1stagetestv2"); //
 				}
 			}
 		}
@@ -1012,6 +1084,8 @@ function costumechange(player)
 		
 
 function Update() {
+
+nameDone();
 
 if (stockAmount > 99) //Max Stock is 99 (Likely will be Changed for Full Game)
 	{
@@ -1643,6 +1717,12 @@ numberOfTeams = redTeamViable + greenTeamViable + blueTeamViable;
 
 }
 
+function nameDone() {
+	if(Input.GetKeyDown(KeyCode.Return))
+	{
+		player1NameButtonBox = 0;
+	}
+}
 
 /* To-Do List
 
