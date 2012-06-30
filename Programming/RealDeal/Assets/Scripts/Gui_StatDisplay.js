@@ -10,10 +10,10 @@ var p1icon:Texture2D;
 var p2icon:Texture2D;
 var p3icon:Texture2D;
 var p4icon:Texture2D;
-var p1stats:String = SelectCharacter.nameordiff1;
-var p2stats:String = SelectCharacter.nameordiff2;
-var p3stats:String = SelectCharacter.nameordiff3;
-var p4stats:String = SelectCharacter.nameordiff4;
+var p1stats:String;
+var p2stats:String;
+var p3stats:String;
+var p4stats:String;
 static var totalplayers:int= SelectCharacter.numberOfPlayers; //Just out of curiosity, why did you make this static? -Inferno.
 static var player1stock:int= SelectCharacter.stockAmount;
 static var player2stock:int= SelectCharacter.stockAmount;
@@ -31,6 +31,10 @@ var charSkin : GUISkin;
 
 function Awake()
 {
+	p1stats = SelectCharacter.nameordiff1;
+	p2stats = SelectCharacter.nameordiff2;
+	p3stats = SelectCharacter.nameordiff3;
+	p4stats = SelectCharacter.nameordiff4;
 }
 
 function Start()
@@ -187,19 +191,19 @@ function OnGUI () {
 		
 		if(SelectCharacter.player1Completed == 1 && SelectCharacter.player2Completed)
 	 	{
-	    	GUI.Box (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), "P3 Stats");
+	    	GUI.Box (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), p3stats);
 			GUI.Label (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-30,Screen.height - 60,120,100), player3percent.ToString()+"%");
 			GUI.Label (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-90,Screen.height - 100,120,100), p3icon);
 		}
 		else if(SelectCharacter.player1Completed ==1 || SelectCharacter.player2Completed)
 		{
-			GUI.Box (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), "P3 Stats");
+			GUI.Box (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), p3stats);
 			GUI.Label (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-30,Screen.height - 60,120,100), player3percent.ToString()+"%");
 			GUI.Label (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-90,Screen.height - 100,120,100), p3icon);
 		}
 		else
 		{
-			GUI.Box (Rect (((Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), "P3 Stats");
+			GUI.Box (Rect (((Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), p3stats);
 			GUI.Label (Rect (((Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-30,Screen.height - 60,120,100), player3percent.ToString()+"%");
 			GUI.Label (Rect (((Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-90,Screen.height - 100,120,100), p3icon);
 		}
@@ -245,19 +249,19 @@ function OnGUI () {
 		}
 		if(SelectCharacter.player1Completed == 1 && SelectCharacter.player2Completed == 1 && SelectCharacter.player3Completed == 1)
 	 	{
-	    	GUI.Box (Rect ((4*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), "P4 Stats");
+	    	GUI.Box (Rect ((4*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), p4stats);
 			GUI.Label (Rect ((4*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-30,Screen.height - 60,120,100), player4percent.ToString()+"%");
 			GUI.Label (Rect ((4*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-90,Screen.height - 100,120,100), p4icon);
 		}
 		else if((SelectCharacter.player1Completed == 1 && SelectCharacter.player2Completed == 1) || (SelectCharacter.player1Completed == 1 && SelectCharacter.player3Completed == 1) || (SelectCharacter.player2Completed == 1 && SelectCharacter.player3Completed == 1))
 		{
-			GUI.Box (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), "P4 Stats");
+			GUI.Box (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), p4stats);
 			GUI.Label (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-30,Screen.height - 60,120,100), player4percent.ToString()+"%");
 			GUI.Label (Rect ((3*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-90,Screen.height - 100,120,100), p4icon);
 		}
 		else
 		{
-			GUI.Box (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), "P4 Stats");
+			GUI.Box (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-50,Screen.height - 100,200,100), p4stats);
 			GUI.Label (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-30,Screen.height - 60,120,100), player4percent.ToString()+"%");
 			GUI.Label (Rect ((2*(Screen.width/totalplayers))-(Screen.width/(2 * totalplayers))-90,Screen.height - 100,120,100), p4icon);
 		}

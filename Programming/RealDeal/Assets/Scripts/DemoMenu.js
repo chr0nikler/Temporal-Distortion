@@ -64,7 +64,13 @@ var unlockedAchievementImageAP : Texture2D;
 
 
 //AUDIO VARIABLES
+var audio1 : AudioSource; //Creates an Audio Source which will be used for Music
+var audio2 : AudioSource; //Creates an Audio Source which will be used for SFX
+//var audio3 : AudioSource; //Creates an Audio Source which will be used for Voices
 var mainMenuTheme: AudioClip; //Variable for Main Menu Music
+var startToMain : AudioClip; //Variable for Start Menu Sound
+var mainMenuClick : AudioClip; //Variable for clicking a Main Menu button
+var backClick : AudioClip; //Variable for clicking the Back button
 
 //SETTING VARIABLES
 var locationColor : Color; //Color recorded to test for Alpha later
@@ -127,12 +133,14 @@ if (menu == 0)
 	if(GUI.Button (Rect(0,0,Screen.width,Screen.height),pressStart, "label"))	
 		{
 			menu = 1;
+			audio2.PlayOneShot(startToMain);
 			pressedStartAmount++;
 			PlayerPrefs.SetInt("Start Amount",pressedStartAmount);
 		}
 	if (Input.GetKeyDown(ControlSetup.acceptButton))
 		{
 			menu = 1;
+			audio2.PlayOneShot(startToMain);
 			pressedStartAmount++;
 			PlayerPrefs.SetInt("Start Amount",pressedStartAmount);
 		}
@@ -160,6 +168,7 @@ if (menu == 2)
 	if (GUI.Button (Rect (10,10,Screen.width/10,Screen.height/15),backImage)) //Creates back button
 		{
 			menu = 1;
+			audio2.PlayOneShot(backClick);
 		}
 	musicVolume = GUI.HorizontalSlider(Rect(Screen.width*.25, Screen.height*.2, Screen.width*.5,Screen.height*.05), musicVolume, 0, 1); //Creates a slider to change the Music Volume
 	soundVolume = GUI.HorizontalSlider(Rect(Screen.width*.25, Screen.height*.35, Screen.width*.5,Screen.height*.05), soundVolume, 0, 1); //Creates a slider to change the Sound Volume
@@ -179,6 +188,7 @@ if (menu == 5)
 	if (GUI.Button(Rect(10,10,Screen.width*.1,Screen.height/15),backImage)) //Creates back button
 		{
 			menu = 1;
+			audio2.PlayOneShot(backClick);
 		}
 	if (GUI.Button(Rect(Screen.width*.05,Screen.height*.1,Screen.width*.425,Screen.height*.175), extrasAchievementsImage)) //Creates achievement button [should be changed to the same style "button" as the main menu]
 		{
@@ -257,6 +267,7 @@ if (extrasMenu == 1)
 		{
 			menu = 5;
 			extrasMenu = 0;
+			audio2.PlayOneShot(backClick);
 		}
 	
 	GUI.Label(Rect(Screen.width*.15,10,Screen.width*.175,Screen.height/15),"Unlocked: " + Achievements.achieveComplete);
@@ -437,6 +448,7 @@ if (extrasMenu == 2)
 		{
 			menu = 5;
 			extrasMenu = 0;
+			audio2.PlayOneShot(backClick);
 		}
 	
 	}
@@ -448,6 +460,7 @@ if (extrasMenu == 3)
 		{
 			menu = 5;
 			extrasMenu = 0;
+			audio2.PlayOneShot(backClick);
 		}
 	
 	}
@@ -459,6 +472,7 @@ if (extrasMenu == 4)
 		{
 			menu = 5;
 			extrasMenu = 0;
+			audio2.PlayOneShot(backClick);
 		}
 			
 	}
@@ -470,6 +484,7 @@ if (extrasMenu == 5)
 			{
 				menu = 5;
 				extrasMenu = 0;
+				audio2.PlayOneShot(backClick);
 			}
 		
 	}
@@ -481,6 +496,7 @@ if (extrasMenu == 6)
 			{
 				menu = 5;
 				extrasMenu = 0;
+				audio2.PlayOneShot(backClick);
 			}
 		
 	}
@@ -492,6 +508,7 @@ if (extrasMenu == 7)
 			{
 				menu = 5;
 				extrasMenu = 0;
+				audio2.PlayOneShot(backClick);
 			}
 		GUI.Box(Rect(100,100,50,50), "" + pressedStartAmount);
 		
@@ -506,6 +523,7 @@ if (extrasMenu == 8)
 			{
 				menu = 5;
 				extrasMenu = 0;
+				audio2.PlayOneShot(backClick);
 			}
 			
 	} 
@@ -541,6 +559,7 @@ if (multiPlayerButton.Contains (Input.mousePosition)) //If the "Fight!" space co
 			if (locationColor.a > 0) //If the alpha value of the color is not 0 (clear)...
 				{
 				menu = 7; //Go to the Character Select Screen
+				audio2.PlayOneShot(mainMenuClick); //Plays the sound
 				pressedFightAmount++; //Adds to the number of times the player has been in the Fight! menu
 				}
 		}
@@ -557,6 +576,7 @@ if (trainingButton.Contains (Input.mousePosition)) //Essentially the same instru
 			if (locationColor.a > 0)
 				{
 				menu = 8;
+				audio2.PlayOneShot(mainMenuClick); //Plays the sound
 				pressedTrainingAmount++;
 					
 				if (pressedTrainingAmount == 1)
@@ -585,6 +605,7 @@ if (extrasButton.Contains (Input.mousePosition)) //Same as above but for "Extras
 			if (locationColor.a > 0)
 				{
 				menu = 5;
+				audio2.PlayOneShot(mainMenuClick); //Plays the sound
 				pressedExtrasAmount++;
 				}
 		}
@@ -601,6 +622,7 @@ if (optionsButton.Contains (Input.mousePosition)) //Same as above but for "Optio
 			if (locationColor.a > 0)
 				{
 				menu = 2;
+				audio2.PlayOneShot(mainMenuClick); //Plays the sound
 				pressedOptionsAmount++;
 				}
 		}
@@ -609,13 +631,14 @@ if (optionsButton.Contains (Input.mousePosition)) //Same as above but for "Optio
 
 }
 		
-	audio.volume = musicVolume; //Sets the volume of the audio to be the same as the value given by the slider
+	audio1.volume = musicVolume; //Sets the volume of the first audio component to the value given by the slider
+	audio2.volume = soundVolume; //Sets the volume of the second audio component to the value given by the slider
 }
 
 function Start () {
-	audio.loop = true; //Makes the music loop
-	audio.clip = mainMenuTheme; //Plays the main menu theme
-	audio.Play ();
+	audio1.loop = true; //Makes the music loop
+	audio1.clip = mainMenuTheme; //Plays the main menu theme
+	audio1.Play ();
 	
 }
 

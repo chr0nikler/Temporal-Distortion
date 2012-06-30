@@ -78,7 +78,7 @@ var player2Scroll : Vector2;
 var player3Scroll : Vector2;
 var player4Scroll : Vector2;
 
-function calcCharacteristics (g : GameObject) : float
+/*function calcCharacteristics (g : GameObject) : float
 {
 	if(g == Characters.Tahu)
 	{
@@ -88,11 +88,11 @@ function calcCharacteristics (g : GameObject) : float
 	{
 		//f = kopakaScript.dead;
 	}
-}
+}*/
 
 function Awake() {
 
-calcCharacteristics (Player1Create.NewModel);
+timeSurvivedP1 = P1script.dead;
 Debug.Log(tahuScript.dead);
 
 Debug.Log("" + timeSurvivedP1);

@@ -38,6 +38,8 @@ var stock:int=SelectCharacter.stockAmount;
 var now : float;
 static var dead : float;
 
+		
+
 
 function Start() {
 	gameObject.tag = "Player";
@@ -75,14 +77,14 @@ function LastHit (lasthittemp:String)
 	lasthit = lasthittemp;
 }
 function Damage (damagetaketemp:int){
-	if (lasthit != "Player1")
+	if (lasthit != playernum)
 	{
 		percent+=damagetaketemp;
 	}
 }
 function Knockback (Kbtemp:Vector4)
 {
-	if (lasthit != "Player1")
+	if (lasthit != playernum)
 	{
 		if (jumpstate == 2)
 		{

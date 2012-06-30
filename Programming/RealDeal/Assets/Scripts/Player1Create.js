@@ -5,6 +5,7 @@ static var model : GameObject;
 static var character : String;
 
 
+
 function Awake()
 {
 	if(characterNumber == 1)
@@ -42,36 +43,35 @@ function Start() {
 
 	
 	clone = Instantiate(NewModel, transform.position, transform.rotation);
+	clone.tag = "Player";
 	costumeChange();
 	clone.transform.localScale += Vector3(10,10,10);
-	clone.tag = "Player";
+	properCollider();
 	clone.animation.playAutomatically = false;
-	character = addCharacterScript(NewModel);
+	clone.AddComponent(P1script);
+	
 	
 	
 	
 }
 
-function addCharacterScript (g : GameObject) : String
+function properCollider()
 {
-	if(g == Characters.Tahu)
+	if(characterNumber == 1)
 	{
-		clone.AddComponent("tahuScript");
+
 		clone.AddComponent(CharacterController);
 		clone.GetComponent(CharacterController).radius = 0.07;
 		clone.GetComponent(CharacterController).height = 0.2205;
 		clone.GetComponent(CharacterController).center.y = 0.1;
-		return("tahu");
 		
 	}
-	else if (g == Characters.Kopaka)
+	else if (characterNumber == 2)
 	{
-		//AddComponent("tahuScript");
 		clone.AddComponent(CharacterController);
 		clone.GetComponent(CharacterController).radius = 0.07;
 		clone.GetComponent(CharacterController).height = 0.2205;
 		clone.GetComponent(CharacterController).center.y = 0.1;
-		return("kopaka");
 	}
 }
 

@@ -322,10 +322,6 @@ if(DemoMenu.menu == 7)
 				player1Status++;
 				
 			}
-			if(player1Status == 2)
-			{
-				nameordiff1 = "CPU Lv. 1";
-			}
 			if (player1Status == 1 || player1Status == 2)
 			{
 				if (GUI.Button (Rect (Screen.width*.175,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player1Costume))
@@ -364,6 +360,7 @@ if(DemoMenu.menu == 7)
 				else
 				{
 					nameordiff1 = GUILayout.TextField(nameordiff1, 8,GUILayout.Height(Screen.height*.1)); //Here
+					Debug.Log(nameordiff1);
 				}
 			}
 			else if (player1Status == 2)
@@ -373,6 +370,7 @@ if(DemoMenu.menu == 7)
 					if (GUILayout.Button("Difficulty " + player1NameButtons, GUILayout.Height(Screen.height*.1))) //Here
 					{
 						nameordiff1 = "CPU Lv." + player1NameButtons.ToString();
+						Debug.Log(nameordiff1);
 						player1NameButtonBox = 0;
 					}
 				}
@@ -395,14 +393,6 @@ if(DemoMenu.menu == 7)
 			{
 				player2Status++;
 				
-			}
-			if(player2Status == 2)
-			{
-				nameordiff2 = "CPU Lv. 1";
-			}
-			else
-			{
-			 	nameordiff2 = "Player 2";
 			}
 			if (player2Status == 1 || player2Status == 2)
 			{
@@ -463,14 +453,6 @@ if(DemoMenu.menu == 7)
 				player3Status++;
 				
 			}
-			if(player3Status == 2)
-			{
-				nameordiff3 = "CPU Lv. 1";
-			}
-			else
-			{
-			 	nameordiff3 = "Player 3";
-			}
 			if (player3Status == 1 || player3Status == 2)
 			{
 				if (GUI.Button (Rect (Screen.width*.65,Screen.height*.9,Screen.width*.03125,Screen.height*.05),"" + player3Costume))
@@ -528,14 +510,6 @@ if(DemoMenu.menu == 7)
 			{
 				player4Status++;
 				
-			}
-			if(player4Status == 2)
-			{
-				nameordiff4 = "CPU Lv. 1";
-			}
-			else
-			{
-			 	nameordiff4 = "Player 4";
 			}
 			if (player4Status == 1 || player4Status == 2)
 			{
