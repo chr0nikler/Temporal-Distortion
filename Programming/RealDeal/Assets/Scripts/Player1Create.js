@@ -49,6 +49,7 @@ function Start() {
 	properCollider();
 	clone.animation.playAutomatically = false;
 	clone.AddComponent(P1script);
+
 	
 	
 	

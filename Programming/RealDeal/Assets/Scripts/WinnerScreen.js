@@ -93,7 +93,6 @@ var player4Scroll : Vector2;
 function Awake() {
 
 timeSurvivedP1 = P1script.dead;
-Debug.Log(tahuScript.dead);
 
 Debug.Log("" + timeSurvivedP1);
 var times = new Array(timeSurvivedP1, timeSurvivedP2, timeSurvivedP3, timeSurvivedP4);
